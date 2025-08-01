@@ -1,0 +1,67 @@
+format = '''
+[╭─](bold red) $directory── $git_branch$git_state$git_status
+[│](bold red)$time $battery $memory_usage
+[╰───────────────$character](bold red)
+'''
+
+[time]
+format = "[$time]($style)"
+time_format = "%I:%M %p"
+disabled = false
+
+[battery]
+format = "[$percentage]($style)"
+disabled = false
+
+[[battery.display]]
+threshold = 100
+style = 'bold red'
+
+[directory]
+truncation_length = 3 
+truncate_to_repo = false
+truncation_symbol = "../"
+style = "bold cyan"
+
+[character]
+success_symbol = "λ"
+error_symbol = "❌"
+
+[python]
+symbol = " "
+format = "[${symbol}($virtualenv )]($style)python ($version)"
+style = "bold yellow"
+detect_extensions = ["py"]
+python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+
+[nodejs]
+symbol = " "
+format = "via [$symbol $version](bold green)"
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+symbol = " "
+style = "bold magenta"
+
+[git_commit]
+format = "[($hash$tag)](bold white) "
+only_detached = false
+
+[git_status]
+style = "bold red"
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+deleted = "x "
+
+[git_state]
+style = "bold yellow"
+
+[memory_usage]
+format = "[$symbol[$ram_pct]($style)]"
+symbol = "🧠 "
+threshold = 10
+style = "bold green"
+

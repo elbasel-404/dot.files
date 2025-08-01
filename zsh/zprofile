@@ -1,0 +1,4 @@
+#systemctl --user enable --now hyprpolkitagent.service
+
+# Created by `pipx` on 2025-07-12 21:18:09
+export PATH="$PATH:/home/elbasel/.local/bin"

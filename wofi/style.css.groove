@@ -1,0 +1,40 @@
+window {
+  background-color: rgba(29, 32, 33, 0.95); /* Gruvbox dark bg */
+  color: #ebdbb2; /* Gruvbox fg */
+  font-family: JetBrains Mono, Fira Code, monospace;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#input {
+  background-color: rgba(40, 40, 40, 1);
+  color: #ebdbb2;
+  border: 1px solid #665c54;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+}
+
+#entry {
+  background-color: rgba(29, 32, 33, 0.8);
+  color: #ebdbb2;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 2px 0;
+}
+
+#entry:selected {
+  background-color: rgba(213, 196, 161, 0.2);
+  color: #fabd2f;
+  border-left: 3px solid #fabd2f;
+}
+
+#text {
+  color: inherit;
+}
+
+#text:selected {
+  color: #fabd2f;
+}
+

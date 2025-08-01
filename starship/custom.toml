@@ -1,0 +1,100 @@
+format = '''
+[============ع============](bold red)
+[->](bold green) 
+'''
+
+
+[username]
+format = " [╭─Kei]($style)"
+style_user = "bold "
+style_root = "bold "
+show_always = true
+
+# Second param
+[hostname]
+format = "[$hostname]($style) in "
+style = "bold"
+trim_at = "-"
+ssh_only = false
+disabled = false
+
+# Third param
+[directory]
+truncation_length = 5
+truncate_to_repo = false
+truncation_symbol = "../"
+
+
+
+
+# Last param in the first line/row
+# [cmd_duration]
+# min_time = 1
+# format = "took [$duration]($style)"
+# disabled = falsefalse
+
+
+
+# Prompt: optional param 1
+# [time]
+# format = " 🕙 $time($style)\n"
+# time_format = "%T"
+# style = "bright"
+# disabled = true
+
+# Prompt: param 2 └─
+[character]
+success_symbol = " [λ](bold )"
+# error_symbol = " [×](bold )"
+error_symbol = " [❌](bold )"
+
+
+[golang]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[package]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+#pyenv_version_name = true
+format = '[${symbol}(\($virtualenv\) )]($style)python (${version} )'
+style = "bold yellow"
+pyenv_prefix = "venv "
+python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+detect_extensions = ["py"]
+version_format = "v${raw}"
+
+[nodejs]
+
+format = "via [ Node.js $version](bold) "
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
+# Before all the version info (python, nodejs, php, etc.)
+
+
+# ! git ascending
+
+[git_branch]
+format = "[$symbol](bold)[$repository$name$branch](bold)"
+symbol = " "
+
+[git_commit]
+format = "[\\($hash$tag\\)](bold) "
+only_detached = false
+
+[git_status]
+style = "bold"
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+deleted = "x"
+
+[git_state]
+style = "bold"

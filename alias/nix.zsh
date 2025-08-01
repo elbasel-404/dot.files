@@ -1,0 +1,11 @@
+alias nix.collect.garbage="sudo nix-collect-garbage -d"
+alias nix.clean="sudo nix-store --gc"
+alias nix.repair="sudo nix-store --verify --check-contents --repair"
+alias nix.rebuild.switch="sudo nixos-rebuild switch"
+alias nix.rebuild.switch.upgrade="sudo nixos-rebuild switch --upgrade"
+alias nix.deleteOld="sudo nix-collect-garbage --delete-old && nix.rebaliasssh ualiasssh ild.switch"
+alias nix.rebuild.flake="sudo nixos-rebuild switch --flake"
+alias rnix="nix-shell -p"
+
+
+

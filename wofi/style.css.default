@@ -1,0 +1,32 @@
+/* window { */
+  /* background-color: rgba(30, 30, 30, 0.9); */
+  /* border-radius: 12px; */
+  /* padding: 10px; */
+  /* font-family: JetBrainsMono Nerd Font; */
+  /* font-size: 14px; */
+/* } */
+
+window {
+  background-color: rgba(20, 20, 20, 0.95);
+  color: #ffffff;
+  font-family: JetBrains Mono, monospace;
+  font-size: 14px;
+}
+
+#input {
+  background-color: rgba(40, 40, 40, 1);
+  color: #ffffff;
+  border: none;
+  padding: 5px;
+}
+
+#entry {
+  background-color: rgba(30, 30, 30, 0.9);
+  color: #ffffff;
+}
+
+#entry:selected {
+  background-color: rgba(80, 80, 80, 0.9);
+  color: #ffffff;
+}
+

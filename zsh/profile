@@ -1,0 +1,65 @@
+ALIAS_DIR="$HOME/.alias"
+
+for file in "$ALIAS_DIR"/*; do
+  if [[ -f "$file" ]]; then
+    source "$file"
+  fi
+done
+
+#_volume
+alias vol.down="wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@"
+alias vol.up="wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wpctl get-volume @DEFAULT_AUDIO_SINK@"
+alias vol.set="wpctl set-volume @DEFAULT_SINK@"
+
+#_brightness
+alias bright.down.10="brightnessctl s 10%-"
+alias bright.up.10="brightnessctl s 10%+"
+alias bright.down.5="brightnessctl s 5%-"
+alias bright.up.5="brightnessctl s 5%+"
+alias bright.down.1="brightnessctl s 1%-"
+alias bright.up.1="brightnessctl s 1%+"
+
+# web
+alias web.browser.brave="brave --no-sandbox && disown %brave &"
+
+# wofi
+alias wofi.dmenu="wofi --insensitive --gtk-dark --show dmenu && exit"
+alias wofi.drun="wofi --insensitive --gtk-dark --show drun && exit"
+
+# ai
+alias ai.chat.deepseek-r1="ollama run deepseek-r1"
+
+# shell
+#-------------------------------------
+alias sh.source.zsh="source~/.zshrc"
+alias sh.source.bashrc="source~/.bashrc"
+alias sh.source.profile="source ~/.profile"
+alias sh.profile.show="cat ~/.profile"
+
+# gui
+# alias gui.uwsm.default="exec uwsm start default"
+# alias gui.uwsm.select="exec uwsm start select"
+
+# tar
+alias tar.unpack="tar -xvzf"
+
+# security
+alias security.polkit.enable="systemctl --user enable --now hyprpolkitagent.service"
+
+# screenshot
+#alias screen.shot='grim -g "$(slurp)" - | swappy -f -'
+alias screen.shot.area.save='grimblast save area'
+alias screen.shot.area.copy='grimblast copy area'
+
+# misc
+alias clock="peaclock"
+
+# flatpak
+export XDG_DATA_DIRS=$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
+
+# dbus
+# if command -v dbus-launch >/dev/null && [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+#   eval "$(dbus-launch --sh-syntax)"
+# fi
+#
+

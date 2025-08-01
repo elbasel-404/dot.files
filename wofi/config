@@ -1,0 +1,6 @@
+width=500
+height=300
+location=center
+prompt:Run:
+show=drun
+term=kitty
