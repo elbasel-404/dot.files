@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     # ! --- Nix & Dev Tools ---
+    pciutils
     # new START
     # gsettings-qt # Qt-based settings for GNOME
     # komorebi
