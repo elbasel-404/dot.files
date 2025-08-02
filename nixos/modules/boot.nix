@@ -27,13 +27,26 @@
   boot.kernelModules = [
     "kvm-intel"
     "cgroup_cpuset"
+    "intel_tcc_cooling"
+    "intel_lpss_pci"
+    "i2c_hid_acpi"
+    "intel_hid_accel"
+    "nvme"
   ];
+
   boot.extraModulePackages = [ ];
+
+  boot.kernelParams = [
+    "i915.enable_guc=3"
+    "i915.force_probe=46d1"
+    "intel_iommu=on,kernel_enable=no"
+    "cgroup_enable=cpuset"
+  ];
 
   # Custom parameters to be added to the kernel command line.
   # These can control various kernel behaviors or enable specific features.
   # "cgroup_enable=cpuset" enables the cpuset cgroup functionality.
-  boot.kernelParams = [ "cgroup_enable=cpuset" ];
+  # boot.kernelParams = [  ];
 
   # Specifies the kernel package to use.
   # pkgs.linuxPackages_zen refers to a kernel optimized for desktop performance.

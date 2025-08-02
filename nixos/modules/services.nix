@@ -14,8 +14,20 @@
   security.pam.services.gdm-password.enableGnomeKeyring = true;
   services.xserver.xkb.layout = "us,ara";
   services.xserver.xkb.options = "grp:alt_shift_toggle";
-  services.tlp.enable = true;
+  services.hypridle.enable = true;
   services.thermald.enable = true;
+  services.auto-cpufreq.enable = true;
+  services.power-profiles-daemon.enable = false;
+  services.xserver.videoDrivers = [ "intel" ];
+  services.xserver.deviceSection = ''
+    Option "TearFree" "true"
+  '';
+
+  # services.tlp.enable = true;
+  # services.tlp.settings = {
+  #   CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  #   CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  # };
   # services.gvfs.enable = true;
   # services.power-profiles-daemon.enable = true;
 }
