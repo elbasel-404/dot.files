@@ -16,18 +16,18 @@
   services.xserver.xkb.options = "grp:alt_shift_toggle";
   services.hypridle.enable = true;
   services.thermald.enable = true;
-  services.auto-cpufreq.enable = true;
   services.power-profiles-daemon.enable = false;
   services.xserver.videoDrivers = [ "intel" ];
   services.xserver.deviceSection = ''
     Option "TearFree" "true"
   '';
 
-  # services.tlp.enable = true;
-  # services.tlp.settings = {
-  #   CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-  #   CPU_SCALING_GOVERNOR_ON_AC = "performance";
-  # };
+  # services.auto-cpufreq.enable = true;
+  services.tlp.enable = true;
+  services.tlp.settings = {
+    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+    CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  };
   # services.gvfs.enable = true;
   # services.power-profiles-daemon.enable = true;
 }

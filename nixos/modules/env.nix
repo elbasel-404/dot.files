@@ -1,7 +1,7 @@
 {
   # environment.sessionVariables.QT_QPA_PLATFORMTHEME = "qt5ct";
   # environment.sessionVariables.QT_STYLE_OVERRIDE = "kvantum";
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # environment.sessionVariables.XDG_SESSION_DESKTOP = "Hyprland";
   # environment.sessionVariables.XDG_CURRENT_DESKTOP = "Hyprland";
   # environment.sessionVariables.XDG_DESKTOP_DIR = "$HOME/Desktop";
