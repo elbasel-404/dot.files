@@ -8,7 +8,7 @@
   # UPower is a daemon that provides an interface to enumerate power sources on the system,
   # listen to power events, and query history and statistics.
   # It's commonly used by desktop environments to display battery status and manage power settings.
-  # services.upower.enable = true;
+  services.upower.enable = true;
   powerManagement.powertop.enable = true;
 
   # auto-cpufreq is a tool that automatically optimizes CPU speed and power consumption.

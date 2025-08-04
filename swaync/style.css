@@ -1,0 +1,100 @@
+/* === Base styling === */
+* {
+  font-family: "JetBrains Mono", "Inter", sans-serif;
+  font-size: 14px;
+  color: #eeeeee;
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+/* === Notification window === */
+.notification-window {
+  background-color: rgba(20, 20, 25, 0.95);
+  border-radius: 12px;
+  padding: 8px;
+  margin: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* === Notification rows === */
+.notification-row {
+  background-color: rgba(30, 30, 35, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 8px 0;
+}
+
+/* === Notification content === */
+.notification-row .summary {
+  font-weight: bold;
+  font-size: 16px;
+  color: #eeeeee;
+}
+
+.notification-row .body {
+  font-size: 14px;
+  color: #999999;
+  margin-top: 4px;
+}
+
+.notification-row .time {
+  font-size: 12px;
+  color: #888888;
+}
+
+/* === Buttons === */
+.notification-button {
+  background-color: transparent;
+  color: #4fbcff;
+  border: 1px solid #4fbcff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.notification-button:hover {
+  background-color: #4fbcff;
+  color: #000000;
+}
+
+/* === Control center === */
+.control-center {
+  background-color: rgba(20, 20, 25, 0.95);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* === Control center widgets === */
+.widget-title,
+.widget-label,
+.widget-dnd {
+  font-size: 15px;
+  color: #eeeeee;
+  margin-bottom: 6px;
+}
+
+.widget-slider {
+  margin-top: 10px;
+}
+
+/* === Urgency levels === */
+.notification-row.low {
+  border-left: 4px solid #bbbbbb;
+}
+
+.notification-row.normal {
+  border-left: 4px solid #4fbcff;
+}
+
+.notification-row.critical {
+  border-left: 4px solid #ff5c57;
+}
+
+/* === Images in notifications === */
+.image {
+  border-radius: 8px;
+}

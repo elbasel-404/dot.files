@@ -14,5 +14,5 @@
   # environment.sessionVariables.XDG_VIDEOS_DIR = "$HOME/Videos";
   # environment.sessionVariables.HYPRSHOT_DIR = "$HOME/Pictures/Screenshots";
   # environment.sessionVariables.QT_QPA_PLATFORM = "qt5ct";
-  # environment.sessionVariables.GTK_THEME = "Dark-Gruvbox"; # required for Nautilus to apply current theme
+  environment.sessionVariables.GTK_THEME = "Arc-Dark"; # required for Nautilus to apply current theme
 }

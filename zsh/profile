@@ -37,8 +37,8 @@ alias sh.source.profile="source ~/.profile"
 alias sh.profile.show="cat ~/.profile"
 
 # gui
-# alias gui.uwsm.default="exec uwsm start default"
-# alias gui.uwsm.select="exec uwsm start select"
+alias gui.uwsm.default="exec uwsm start default"
+alias gui.uwsm.select="exec uwsm start select"
 
 # tar
 alias tar.unpack="tar -xvzf"

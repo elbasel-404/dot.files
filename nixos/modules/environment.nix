@@ -9,6 +9,7 @@
     # xorg.xcursorthemes
     # gsettings-desktop-schemas # Schemas for GNOME desktop settings
     # gnome.nixos-gsettings-overrides # NixOS overrides for GNOME settings
+    libreoffice-qt6-fresh # office apps
     net-tools
     libnotify
     pamixer
@@ -31,6 +32,7 @@
     xfce.xfce4-icon-theme
     arc-theme
     # hyprshot # A screenshot tool for Hyprland (Wayland) that allows capturing screenshots with various options.
+    powertop
 
     # new END
     hyprls # language server for Hyprland, providing code intelligence and autocompletion for Hyprland configuration files.

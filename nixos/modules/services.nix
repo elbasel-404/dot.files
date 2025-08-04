@@ -16,18 +16,41 @@
   services.xserver.xkb.options = "grp:alt_shift_toggle";
   services.hypridle.enable = true;
   services.thermald.enable = true;
-  services.power-profiles-daemon.enable = false;
+  # services.power-profiles-daemon.enable = false;
   services.xserver.videoDrivers = [ "intel" ];
   services.xserver.deviceSection = ''
     Option "TearFree" "true"
   '';
 
-  # services.auto-cpufreq.enable = true;
-  services.tlp.enable = true;
-  services.tlp.settings = {
-    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-    CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      energy_performance_preference = "power";
+      turbo = "never";
+      platform_profile = "battery";
+      enable_thresholds = "true";
+      start_threshold = "20";
+      stop_threshold = "80";
+      ideapad_laptop_conservation_mode = "true";
+    };
+
+    charger = {
+      governor = "performance";
+      energy_performance_preference = "balance_performance";
+      turbo = "auto";
+      platform_profile = "performance";
+    };
+
+    general = {
+      poll_interval = 4;
+      sleep_poll_interval = 2;
+    };
   };
+  # services.tlp.enable = true;
+  # services.tlp.settings = {
+  #   CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  #   CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  # };
   # services.gvfs.enable = true;
-  # services.power-profiles-daemon.enable = true;
 }

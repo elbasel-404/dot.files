@@ -39,11 +39,11 @@ typeset -A custom_searches=(
 
 # Display menu and get user selection
 menu_items=("${(@k)app_urls}" "${(@k)custom_searches[@]/%/: }")
-selected=$(printf "%s\n" "${menu_items[@]}" | wofi --dmenu --insensitive --prompt "Select App or Search")
+selected=$(printf "%s\n" "${menu_items[@]}" | uwsm app -- wofi --dmenu --insensitive --prompt "Select App or Search")
 
 # Helper function to launch a URL in Brave
 launch_url() {
-  brave --app="$1" &
+  uwsm app -- brave --app="$1" &
 }
 
 # Process user selection
