@@ -14,6 +14,9 @@
     intel-compute-runtime
     vpl-gpu-rt # newer hardware
     intel-ocl
+    mesa
+    vulkan-loader
+    vulkan-validation-layers
     # vaapiIntel         # Older VA-API driver, intel-media-driver is preferred
     # libvdpau-va-gl     # VDPAU-VA-API backend
   ];

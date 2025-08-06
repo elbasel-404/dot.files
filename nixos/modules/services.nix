@@ -16,7 +16,7 @@
   services.xserver.xkb.options = "grp:alt_shift_toggle";
   services.hypridle.enable = true;
   services.thermald.enable = true;
-  # services.power-profiles-daemon.enable = false;
+  services.power-profiles-daemon.enable = false;
   services.xserver.videoDrivers = [ "intel" ];
   services.xserver.deviceSection = ''
     Option "TearFree" "true"
@@ -53,4 +53,5 @@
   #   CPU_SCALING_GOVERNOR_ON_AC = "performance";
   # };
   # services.gvfs.enable = true;
+  services.envfs.enable = true;
 }

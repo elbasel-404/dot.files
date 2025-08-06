@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  environment.sessionVariables.VDPAU_DRIVER = "va_gl";
+  environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
+
   environment.systemPackages = with pkgs; [
     # ! --- Nix & Dev Tools ---
     pciutils
@@ -16,6 +19,7 @@
     yad
     cava
     networkmanagerapplet # Applet for managing network connections in GNOME
+    dig # network tool
     ayu-theme-gtk # Ayu GTK theme for a clean and modern look
     gruvbox-kvantum # Gruvbox Kvantum theme for a retro groove color scheme
     gtk-engine-murrine # Murrine GTK engine for custom themes
@@ -33,6 +37,10 @@
     arc-theme
     # hyprshot # A screenshot tool for Hyprland (Wayland) that allows capturing screenshots with various options.
     powertop
+    shfmt # format shell files
+    shellcheck # sh file checking
+    bash-language-server # language server for bash
+    lxqt.lxqt-policykit
 
     # new END
     hyprls # language server for Hyprland, providing code intelligence and autocompletion for Hyprland configuration files.
@@ -71,7 +79,7 @@
     google-chrome # Web browser by Google
     brave # Privacy-focused web browser
     firefox # Mozilla web browser
-    chromium # Open-source web browser project
+    # chromium # Open-source web browser project
 
     # ! --- Media & Graphics ---
     mpv # Media player

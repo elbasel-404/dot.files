@@ -1,0 +1,190 @@
+/* 
+ * Wofi GitHub Dark Theme
+ * Place this file at ~/.config/wofi/style.css
+ * or use with: wofi --style=/path/to/this/file.css
+ */
+
+/* Main window */
+
+/* Input field */
+#input {
+  margin: 8px 12px 12px 12px;
+  padding: 8px 12px;
+  border: 1px solid #21262d;
+  background-color: #21262d;
+  border-radius: 6px;
+  color: #f0f6fc;
+  font-size: 14px;
+  font-weight: 400;
+  outline: none;
+  caret-color: #58a6ff;
+}
+
+#input:focus {
+  border-color: #388bfd;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
+  background-color: #161b22;
+}
+
+#input::placeholder {
+  color: #7d8590;
+  font-style: italic;
+}
+
+/* Scrolled window (container for entries) */
+#scroll {
+  margin: 0px 8px 8px 8px;
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+}
+
+/* Prevent layout shifts during filtering */
+#scroll scrolledwindow {
+  min-height: 200px;
+}
+
+/* Individual entries */
+#entry {
+  padding: 10px 12px;
+  margin: 2px 0px;
+  border: none;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #e6edf3;
+  font-size: 14px;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+
+/* Entry hover state */
+#entry:hover {
+  background-color: #21262d;
+  color: #f0f6fc;
+}
+
+/* Selected entry */
+#entry:selected {
+  background-color: #1f6feb;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+#entry:selected:hover {
+  background-color: #388bfd;
+}
+
+/* Icons */
+#entry image {
+  margin-right: 12px;
+  padding: 0px;
+  min-width: 20px;
+  min-height: 20px;
+  max-width: 20px;
+  max-height: 20px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* Handle missing icons gracefully */
+#entry:not(:has(image)) {
+  padding-left: 44px; /* 12px + 20px + 12px to maintain alignment */
+}
+
+/* Entry text */
+#entry label {
+  color: inherit;
+  font-weight: inherit;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+/* Outer box */
+#outer-box {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+}
+
+/* Inner box */
+#inner-box {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+}
+
+/* Text styling for entries */
+#text {
+  margin: 0px;
+  padding: 0px;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Custom scrollbar */
+scrollbar {
+  background-color: #0d1117;
+  border-radius: 4px;
+  width: 6px;
+}
+
+scrollbar slider {
+  background-color: #30363d;
+  border-radius: 4px;
+  min-width: 6px;
+  min-height: 20px;
+}
+
+scrollbar slider:hover {
+  background-color: #484f58;
+}
+
+/* No results state */
+#entry:disabled {
+  color: #7d8590;
+  background-color: transparent;
+}
+
+#entry:disabled:hover {
+  background-color: transparent;
+}
+
+/* Match highlighting (if wofi supports it) */
+.match {
+  color: #ffa657;
+  font-weight: 600;
+}
+
+/* Remove alternating backgrounds that can cause shifts */
+#entry:nth-child(odd) {
+  background-color: transparent;
+}
+
+#entry:nth-child(odd):hover {
+  background-color: #21262d;
+}
+
+/* Animation for smooth appearance */
+window {
+  animation: fadeInScale 0.15s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+}

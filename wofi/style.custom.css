@@ -1,0 +1,21 @@
+window {
+  background-color: black;
+}
+
+#input {
+  background-color: black;
+}
+
+#entry {
+  display: flex;
+  gap: 20px;
+}
+
+#entry image {
+  display: block;
+  width: 50px;
+}
+
+#entry label {
+  flex: 1;
+}

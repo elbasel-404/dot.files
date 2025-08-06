@@ -14,25 +14,24 @@
   # "i915" is for Intel graphics.
   boot.initrd.kernelModules = [
     "i915"
-    "xhci_pci"
-    "nvme"
-    "usb_storage"
-    "sd_mod"
-    "sdhci_pci"
-
+    # "xhci_pci"
+    # "nvme"
+    # "usb_storage"
+    # "sd_mod"
+    # "sdhci_pci"
   ];
   # Kernel modules to be loaded automatically after the system has booted.
   # "cgroup_cpuset" is a module related to cgroup cpuset functionality.
 
-  boot.kernelModules = [
-    "kvm-intel"
-    "cgroup_cpuset"
-    "intel_tcc_cooling"
-    "intel_lpss_pci"
-    "i2c_hid_acpi"
-    "intel_hid_accel"
-    "nvme"
-  ];
+  # boot.kernelModules = [
+  #   "kvm-intel"
+  #   "cgroup_cpuset"
+  #   "intel_tcc_cooling"
+  #   "intel_lpss_pci"
+  #   "i2c_hid_acpi"
+  #   "intel_hid_accel"
+  #   "nvme"
+  # ];
 
   boot.extraModulePackages = [ ];
 
@@ -41,6 +40,11 @@
     "i915.force_probe=46d1"
     "intel_iommu=on,kernel_enable=no"
     "cgroup_enable=cpuset"
+    "mitigations=off" # Only if you prioritize performance over security
+    # "quiet"
+    "splash"
+    "rd.systemd.show_status=false"
+    "rd.udev.log_level=3"
   ];
 
   # Custom parameters to be added to the kernel command line.

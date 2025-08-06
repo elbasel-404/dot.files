@@ -5,7 +5,6 @@
   imports = [
     # ./modules/disabled.nix
     ./hardware-configuration.nix
-    ./modules/env.nix
     ./modules/qt.nix
     ./modules/nix.nix
     ./modules/nixPkgs.nix
@@ -29,4 +28,10 @@
     ./modules/systemd.nix
   ];
 
+  # swapDevices = [
+  #   {
+  #     device = "/swapfile";
+  #     size = 16 * 1024; # 16GB
+  #   }
+  # ];
 }

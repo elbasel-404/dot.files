@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.hyprland.enable = true;
-  programs.hyprland.withUWSM = true;
+  # programs.hyprland.withUWSM = true;
   programs.hyprlock.enable = true;
   programs.hyprland.xwayland.enable = true;
   # programs.hyprland.withUWSM = true;
