@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 # Improved wofi application launcher
 # Launches applications using wofi with proper error handling and validation
 
@@ -16,18 +17,18 @@ WOFI_OPTS=(
 # Function to launch application
 launch_app() {
     local selected_app
-    
+
     # Get the selected application from wofi
     if ! selected_app=$(wofi "${WOFI_OPTS[@]}" 2>/dev/null); then
         # User cancelled or wofi failed
         exit 0
     fi
-    
+
     # Check if something was actually selected
     if [[ -z "$selected_app" ]]; then
         exit 0
     fi
-    
+
     # Launch the application in the background
     # Use setsid to detach from the terminal session
     if command -v setsid >/dev/null 2>&1; then

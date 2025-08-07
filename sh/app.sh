@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 # Define application URLs
 typeset -A app_urls=(
@@ -38,7 +38,13 @@ typeset -A custom_searches=(
 )
 
 # Display menu and get user selection
-menu_items=("${(@k)app_urls}" "${(@k)custom_searches[@]/%/: }")
+menu_items=()
+for key in "${!app_urls[@]}"; do
+  menu_items+=("$key")
+done
+for key in "${!custom_searches[@]}"; do
+  menu_items+=("${key}: ")
+done
 selected=$(printf "%s\n" "${menu_items[@]}" | uwsm app -- wofi --dmenu --insensitive --prompt "Select App or Search")
 
 # Helper function to launch a URL in Brave
@@ -49,10 +55,11 @@ launch_url() {
 # Process user selection
 if [[ -n "$selected" ]]; then
   # Handle custom searches
-  for prefix base_url in "${(@kv)custom_searches}"; do
+  for prefix in "${!custom_searches[@]}"; do
+    base_url="${custom_searches[$prefix]}"
     if [[ "$selected" == "$prefix: "* ]]; then
       query="${selected#*: }"
-      formatted_query="${(j:+:)${(s: :)query}}"
+      formatted_query="${query// /+}"
       launch_url "${base_url}${formatted_query}"
       exit
     fi

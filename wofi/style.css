@@ -1,200 +1,54 @@
-/* 
- * Wofi All Black Theme - Optimized for Performance
- * Place this file at ~/.config/wofi/style.css
- * or use with: wofi --style=/path/to/this/file.css
- */
+@define-color base           black;
+@define-color blue_border    #2C9FB5;
+@define-color primary_yellow #B08130;
+@define-color base_alt       black;
+@define-color primary_blue   #b6c0cd;
 
 * {
-  all: unset;
-  font-family: monospace;
-  font-size: 14px;
-  color: #ffffff;
+  font-family: "Overpass Nerd Font";
+  font-size: 16px;
 }
 
-/* Main window - minimal styling for performance */
 window {
-  background-color: #000000;
-  border: 1px solid #333333;
-  border-radius: 0px;
-  margin: 0px;
-  padding: 0px;
-  box-shadow: none;
-  opacity: 1;
+  border: 5px solid @blue_border;
+  border-radius: 20px;
 }
 
-/* Input field */
 #input {
-  background-color: #000000;
+  margin-bottom: 15px;
+  padding: 3px;
+  border-radius: 5px;
   border: none;
-  border-bottom: 1px solid #333333;
-  color: #ffffff;
-  padding: 12px;
-  margin: 0px;
-  font-size: 14px;
-  outline: none;
-  caret-color: #ffffff;
+  background: black;
+  font-size: 32px;
+  color: @primary_blue;
 }
 
-#input::placeholder {
-  color: #666666;
-}
-
-/* Outer container */
-#outer-box {
-  background-color: #000000;
-  margin: 0px;
-  padding: 0px;
-}
-
-/* Inner container */
 #inner-box {
-  background-color: #000000;
-  margin: 0px;
-  padding: 0px;
+  background-color: @base_alt;
+  box-shadow: -4px -3px 45px 21px rgba(0, 0, 0, 0.35);
 }
 
-/* Scroll container */
-#scroll {
-  background-color: #000000;
-  margin: 0px;
-  padding: 0px;
-  border: none;
+#outer-box {
+  margin: 5px;
+  padding: 10px;
+  background-color: @base;
+  border-radius: 15px;
 }
 
-/* Individual entries - optimized for no lag */
-#entry {
-  background-color: #000000;
-  color: #ffffff;
-  padding: 8px 12px;
-  margin: 0px;
-  border: none;
-  border-radius: 0px;
-  display: flex;
-  align-items: center;
-  min-height: 32px;
-  transition: none;
-}
-
-/* Entry hover - instant feedback */
-#entry:hover {
-  background-color: #111111;
-}
-
-/* Selected entry */
-#entry:selected {
-  background-color: #222222;
-  color: #ffffff;
-}
-
-/* Icons - fixed size and position */
-#entry image {
-  width: 16px;
-  height: 16px;
-  min-width: 16px;
-  min-height: 16px;
-  max-width: 16px;
-  max-height: 16px;
-  margin-right: 10px;
-  margin-left: 0px;
-  padding: 0px;
-  flex-shrink: 0;
-}
-
-/* Text labels */
-#entry label {
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: normal;
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Text content */
 #text {
-  color: #ffffff;
-  font-size: 14px;
+  padding: 5px;
+  color: @primary_blue;
 }
 
-/* Scrollbar - minimal */
-scrollbar {
-  background-color: #000000;
-  width: 4px;
-}
-
-scrollbar slider {
-  background-color: #333333;
-  border-radius: 0px;
-  min-height: 20px;
-}
-
-scrollbar slider:hover {
-  background-color: #444444;
-}
-
-/* Remove all animations and transitions */
-* {
-  transition: none !important;
-  animation: none !important;
-}
-
-/* Ensure no layout shifts */
-window,
-#outer-box,
-#inner-box,
-#scroll {
-  width: 600px;
-  max-width: 600px;
-  min-width: 600px;
-}
-
-#scroll {
-  height: 400px;
-  max-height: 400px;
-  min-height: 400px;
-}
-
-/* Hide any default GTK styling */
-.horizontal,
-.vertical {
-  background: none;
-  border: none;
-  box-shadow: none;
-}
-
-/* Ensure consistent entry heights */
-#entry:nth-child(n) {
-  height: 32px;
-  min-height: 32px;
-  max-height: 32px;
-  line-height: 32px;
-}
-
-/* Handle entries without icons */
-#entry:not([class*="icon"]) image {
-  display: none;
-}
-
-#entry:not([class*="icon"]) {
-  padding-left: 26px; /* Compensate for missing icon space */
-}
-
-/* Performance optimizations */
-#entry label,
-#entry image {
-  will-change: auto;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-/* Remove focus outlines for cleaner look */
-#input:focus {
-  outline: none;
-  border-bottom-color: #555555;
-}
-
-/* Ensure consistent spacing */
 #entry {
-  box-sizing: border-box;
+  padding: 10px;
+}
+
+#entry:nth-child(even) {
+  background-color: @base;
+}
+
+#entry:selected {
+  background-color: @primary_yellow;
 }

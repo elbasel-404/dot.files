@@ -1,7 +1,24 @@
 { pkgs, ... }:
+
+let
+  flameshotGrim = pkgs.flameshot.overrideAttrs (oldAttrs: {
+    src = pkgs.fetchFromGitHub {
+      owner = "flameshot-org";
+      repo = "flameshot";
+      rev = "3d21e4967b68e9ce80fb2238857aa1bf12c7b905";
+      sha256 = "sha256-OLRtF/yjHDN+sIbgilBZ6sBZ3FO6K533kFC1L2peugc=";
+    };
+    cmakeFlags = [
+      "-DUSE_WAYLAND_CLIPBOARD=1"
+      "-DUSE_WAYLAND_GRIM=1"
+    ];
+    buildInputs = oldAttrs.buildInputs ++ [ pkgs.libsForQt5.kguiaddons ];
+  });
+in
 {
-  environment.sessionVariables.VDPAU_DRIVER = "va_gl";
+
   environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
     # ! --- Nix & Dev Tools ---
@@ -44,6 +61,7 @@
 
     # new END
     hyprls # language server for Hyprland, providing code intelligence and autocompletion for Hyprland configuration files.
+    # hyprshell # window switcher
     nil # Nix language server (LSP) for providing code intelligence for Nix expressions.
     # devenv # A tool for creating declarative, reproducible, and composable developer environments using Nix.
     # fnm
@@ -77,8 +95,11 @@
 
     # ! --- Browsers ---
     google-chrome # Web browser by Google
+    quickemu
     brave # Privacy-focused web browser
-    firefox # Mozilla web browser
+    firefox-bin # Mozilla web browser
+    grim # screenshot tool
+    flameshotGrim # screenshot (custom build with Wayland Grim support)
     # chromium # Open-source web browser project
 
     # ! --- Media & Graphics ---
@@ -103,7 +124,8 @@
     # swappy # Image editor for Wayland
     hyprpaper # Fast wallpaper utility for Hyprland (Wayland)
     hyprpolkitagent # Polkit authentication agent for Hyprland, written in QT/QML
-    grimblast # Screenshot helper for Hyprland (Wayland)
+    # grimblast # Screenshot helper for Hyprland (Wayland)
+    grim
     wofi # Application launcher for Wayland
     wl-clipboard # Command-line copy/paste for Wayland
 

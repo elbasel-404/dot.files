@@ -1,26 +1,25 @@
 { pkgs, ... }:
 {
   programs.hyprland.enable = true;
-  # programs.hyprland.withUWSM = true;
   programs.hyprlock.enable = true;
-  programs.hyprland.xwayland.enable = true;
-  # programs.hyprland.withUWSM = true;
+  programs.hyprland.xwayland.enable = false;
+  programs.hyprland.withUWSM = true;
 
   programs.waybar.enable = true;
   programs.gnupg.agent.enable = true;
   programs.gnupg.agent.enableSSHSupport = true;
 
-  programs.dconf.profiles.user.databases = [
-    {
-      settings."org/gnome/desktop/interface" = {
-        gtk-theme = "Adwaita";
-        icon-theme = "Flat-Remix-Red-Dark";
-        font-name = "Noto Sans Medium 11";
-        document-font-name = "Noto Sans Medium 11";
-        monospace-font-name = "Noto Sans Mono Medium 11";
-      };
-    }
-  ];
+  # programs.dconf.profiles.user.databases = [
+  #   {
+  #     settings."org/gnome/desktop/interface" = {
+  #       gtk-theme = "Adwaita";
+  #       icon-theme = "Flat-Remix-Red-Dark";
+  #       font-name = "Noto Sans Medium 11";
+  #       document-font-name = "Noto Sans Medium 11";
+  #       monospace-font-name = "Noto Sans Mono Medium 11";
+  #     };
+  #   }
+  # ];
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
