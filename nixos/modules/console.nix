@@ -5,7 +5,7 @@
 
   # If set to true, the virtual console keymap will be configured based on the X server keyboard settings.
   # This allows for a consistent keyboard layout between the graphical environment and virtual consoles.
-  console.useXkbConfig = true;
+  # console.useXkbConfig = true;
 
   # If set to true, console setup (font, keymap) is performed early in the boot process.
   # This ensures the console is configured before most services start.

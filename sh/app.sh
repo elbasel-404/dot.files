@@ -49,7 +49,7 @@ selected=$(printf "%s\n" "${menu_items[@]}" | uwsm app -- wofi --dmenu --insensi
 
 # Helper function to launch a URL in Brave
 launch_url() {
-  uwsm app -- brave --app="$1" &
+  uwsm app -- flatpak run com.brave.Browser --app="$1" &
 }
 
 # Process user selection

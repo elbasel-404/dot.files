@@ -16,7 +16,6 @@
     ./modules/hardware.nix
     ./modules/locale.nix
     ./modules/networking.nix
-    ./modules/power.nix
     ./modules/programs.nix
     ./modules/security.nix
     ./modules/services.nix

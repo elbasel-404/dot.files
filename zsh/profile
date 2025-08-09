@@ -28,6 +28,11 @@ alias wofi.drun="wofi --insensitive --gtk-dark --show drun && exit"
 
 # ai
 alias ai.chat.deepseek-r1="ollama run deepseek-r1"
+alias ai.chat.phi="ollama run phi3"
+alias ai.chat.gemma="ollama run gemma:2b"
+alias ai.chat.llama3.2:3b="ollama run llama3.2:3b"
+alias ai.chat.mistral="ollama run mistral"
+alias ai="ollama run steamdj/llama3.1-cpu-only:latest"
 
 # shell
 #-------------------------------------
@@ -62,4 +67,3 @@ export XDG_DATA_DIRS=$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$H
 #   eval "$(dbus-launch --sh-syntax)"
 # fi
 #
-

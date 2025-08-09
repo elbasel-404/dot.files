@@ -1,6 +1,12 @@
-# ! ~/.zshrc
-source ~/.profile
-source ~/.zsh/.pnpm.zsh
+ source ~/.profile
+# source ~/.zsh/.pnpm.zsh
+export XDG_SESSION_TYPE=wayland
+export QT_QPA_PLATFORM=wayland
+export GDK_BACKEND=wayland
+export MOZ_ENABLE_WAYLAND=1
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+export NIXOS_OZONE_WAYLAND=1
+
 
 export EDITOR="nvim"
 

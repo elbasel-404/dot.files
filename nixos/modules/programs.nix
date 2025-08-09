@@ -1,13 +1,13 @@
 { pkgs, ... }:
 {
   programs.hyprland.enable = true;
-  programs.hyprlock.enable = true;
-  programs.hyprland.xwayland.enable = false;
+  # programs.hyprlock.enable = true;
+  programs.hyprland.xwayland.enable = true;
   programs.hyprland.withUWSM = true;
 
-  programs.waybar.enable = true;
-  programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.enableSSHSupport = true;
+  #programs.waybar.enable = false;
+  #programs.gnupg.agent.enable = false;
+  #programs.gnupg.agent.enableSSHSupport = false;
 
   # programs.dconf.profiles.user.databases = [
   #   {
@@ -21,13 +21,13 @@
   #   }
   # ];
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc # C/C++ runtime libs
-    zlib
-    openssl
-    # add more if needed (runs `nix-locate` on missing libs)
-  ];
+  # programs.nix-ld.enable = true;
+  # programs.nix-ld.libraries = with pkgs; [
+  #   stdenv.cc.cc # C/C++ runtime libs
+  #   zlib
+  #   openssl
+  #   # add more if needed (runs `nix-locate` on missing libs)
+  # ];
 
   # programs.uwsm.enable = true;
   # programs.uwsm.waylandCompositors.hyprland.prettyName = "Hyprland";
@@ -46,11 +46,11 @@
     # "you-should-use"
   ];
 
-  programs.direnv.enable = true;
-  programs.direnv.silent = false;
-  programs.direnv.loadInNixShell = true;
-  programs.direnv.nix-direnv.enable = true;
-  programs.direnv.enableZshIntegration = true;
+  # programs.direnv.enable = true;
+  # programs.direnv.silent = false;
+  # programs.direnv.loadInNixShell = true;
+  # programs.direnv.nix-direnv.enable = true;
+  # programs.direnv.enableZshIntegration = true;
 
   # programs.zoxide.enable = true;
   # programs.zoxide.enableZshIntegration = true;
@@ -58,5 +58,5 @@
   # "--cmd cd"
   # ];
 
-  programs.dconf.enable = true;
+  # programs.dconf.enable = true;
 }

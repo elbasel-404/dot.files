@@ -1,5 +1,5 @@
 {
-  qt.style = "kvantum";
-  qt.enable = true;
-  qt.platformTheme = "qt5ct";
+  # qt.style = "kvantum";
+  #qt.enable = false;
+  # qt.platformTheme = "qt5ct";
 }

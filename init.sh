@@ -1,4 +1,3 @@
-# ! 1- nixos
 sudo ln -srf nixos /etc/nixos
 
 # ! 2- starship
@@ -28,5 +27,5 @@ ln -srf clipse ~/.config/clipse
 # ! 9- nvim
 ln -srf nvim ~/.config/nvim
 
-# ! 9- waybar 
+# ! 9- waybar
 ln -srf waybar ~/.config/waybar

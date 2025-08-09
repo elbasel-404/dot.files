@@ -6,7 +6,7 @@
 
   # Enables nftables, a modern Linux kernel packet classification framework.
   # It is the successor to iptables and provides more efficient and flexible firewalling capabilities.
-  networking.nftables.enable = true;
+  # networking.nftables.enable = true;
 
   # Defines a list of network interfaces that are considered trusted by the firewall.
   # Traffic on these interfaces will bypass firewall restrictions.

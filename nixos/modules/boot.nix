@@ -7,6 +7,7 @@
 
   boot.loader.systemd-boot.enable = true;
 
+
   boot.tmp.cleanOnBoot = true;
 
   # Kernel modules to be included in the initrd.
@@ -33,19 +34,19 @@
   #   "nvme"
   # ];
 
-  boot.extraModulePackages = [ ];
+  #boot.extraModulePackages = [ ];
 
-  boot.kernelParams = [
-    "i915.enable_guc=3"
-    "i915.force_probe=46d1"
-    "intel_iommu=on,kernel_enable=no"
-    "cgroup_enable=cpuset"
-    "mitigations=off" # Only if you prioritize performance over security
-    # "quiet"
-    "splash"
-    "rd.systemd.show_status=false"
-    "rd.udev.log_level=3"
-  ];
+  # boot.kernelParams = [
+  #   "i915.enable_guc=3"
+  #   "i915.force_probe=46d1"
+  #   "intel_iommu=on,kernel_enable=no"
+  #   "cgroup_enable=cpuset"
+  #   "mitigations=off" # Only if you prioritize performance over security
+  #   # "quiet"
+  #   "splash"
+  #   "rd.systemd.show_status=false"
+  #   "rd.udev.log_level=3"
+  # ];
 
   # Custom parameters to be added to the kernel command line.
   # These can control various kernel behaviors or enable specific features.
