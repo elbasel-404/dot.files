@@ -111,7 +111,7 @@
     # swappy # Image editor for Wayland
     # hyprpaper # Fast wallpaper utility for Hyprland (Wayland)
     # hyprpolkitagent # Polkit authentication agent for Hyprland, written in QT/QML
-    # grimblast # Screenshot helper for Hyprland (Wayland)
+    grimblast # Screenshot helper for Hyprland (Wayland)
     # grim
     wofi # Application launcher for Wayland
     wl-clipboard # Command-line copy/paste for Wayland
