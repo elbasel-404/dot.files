@@ -94,6 +94,7 @@
     # vlc # Versatile media player
     # webtorrent_desktop # Streaming torrent client
     obs-studio # Open source video recording and streaming
+    eww
     # file
     # mediainfo
 
