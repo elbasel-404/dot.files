@@ -47,18 +47,6 @@ window {
   color: black;
 }
 
-#text {
-  flex: 1;
-  min-width: 0;
-  max-width: calc(100% - 40px);
-  color: #e0e0e0;
-  line-height: 1.4;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding-left: 20px;
-}
-
 #entry:selected #text {
   color: black;
 }
@@ -76,5 +64,17 @@ window {
   height: 28px;
   flex-shrink: 0;
   align-self: center;
+  padding-left: 20px;
+}
+
+#text {
+  flex: 1;
+  min-width: 0;
+  max-width: calc(100% - 40px);
+  color: #e0e0e0;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   padding-left: 20px;
 }
