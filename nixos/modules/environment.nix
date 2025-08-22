@@ -133,7 +133,7 @@
     ffmpeg # Multimedia framework for handling video, audio, and other multimedia files
     # shellcheck # Shell script analysis tool
     # shfmt # Shell script formatter
-    # jq # Command-line JSON processor
+    jq # Command-line JSON processor
     bat # A cat clone with syntax highlighting and Git integration
     kitty # Terminal emulator
     #terminator
