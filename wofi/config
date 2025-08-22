@@ -4,3 +4,5 @@ location=center
 prompt:Run:
 show=drun
 term=kitty
+no_actions=true
+

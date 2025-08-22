@@ -12,6 +12,7 @@
   services.flatpak.enable = true;
   # services.gnome.gnome-keyring.enable = true;
   # security.pam.services.gdm-password.enableGnomeKeyring = true;
+  services.earlyoom.enable = true;
   # services.xserver.xkb.layout = "us,ara";
   # services.xserver.xkb.options = "grp:alt_shift_toggle";
   # services.hypridle.enable = true;

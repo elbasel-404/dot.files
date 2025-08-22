@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  #zramSwap.enable = false;
+  zramSwap.enable = true;
   #swapDevices = lib.mkForce [ ];
   # zramSwap.memoryPercent = 50;
   # zramSwap.algorithm = "zstd";

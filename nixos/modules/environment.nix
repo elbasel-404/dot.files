@@ -93,7 +93,7 @@
     mpv # Media player
     # vlc # Versatile media player
     # webtorrent_desktop # Streaming torrent client
-    # obs-studio # Open source video recording and streaming
+    obs-studio # Open source video recording and streaming
     # file
     # mediainfo
 
@@ -102,19 +102,20 @@
     wget # Network downloader
     # traceroute # Network diagnostic tool
     # anydesk # Remote desktop application
-    #postman # API testing tool
+    postman # API testing tool
     # azure-cli # Microsoft Azure command-line interface
     deluge # BitTorrent client
 
     # ! --- Hyprland & Wayland ---
     # wl-clip-persist # Keeps Wayland clipboard after program exit
-    # swappy # Image editor for Wayland
-    # hyprpaper # Fast wallpaper utility for Hyprland (Wayland)
-    # hyprpolkitagent # Polkit authentication agent for Hyprland, written in QT/QML
+    hyprpaper # Fast wallpaper utility for Hyprland (Wayland)
+    hyprpolkitagent # Polkit authentication agent for Hyprland, written in QT/QML
     grimblast # Screenshot helper for Hyprland (Wayland)
     # grim
     wofi # Application launcher for Wayland
     wl-clipboard # Command-line copy/paste for Wayland
+    ripgrep
+    fd
 
     # ! --- KDE & Qt ---
     #kdePackages.dolphin # KDE file manager
@@ -158,7 +159,9 @@
     silver-searcher # Fast code-searching tool, similar to ack
     # glow # Terminal markdown reader
     clipse # Terminal-based clipboard manager (TUI) for Unix
+    swappy # screenshot editing tool
     # koboldcpp # Easy-to-use AI text-generation software for GGML/GGUF models
+    nautilus # file manager
     # aider-chat # AI coding assistant for working with codebases
 
     # ! zsh

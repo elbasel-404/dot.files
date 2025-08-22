@@ -3,7 +3,7 @@
   programs.hyprland.enable = true;
   # programs.hyprlock.enable = true;
   programs.hyprland.xwayland.enable = true;
-  programs.hyprland.withUWSM = true;
+  # programs.hyprland.withUWSM = true;
 
   #programs.waybar.enable = false;
   #programs.gnupg.agent.enable = false;

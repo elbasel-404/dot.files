@@ -1,54 +1,80 @@
-@define-color base           black;
-@define-color blue_border    #2C9FB5;
-@define-color primary_yellow #B08130;
-@define-color base_alt       black;
-@define-color primary_blue   #b6c0cd;
-
 * {
-  font-family: "Overpass Nerd Font";
-  font-size: 16px;
+  font-family: "JetBrainsMono Nerd Font", "Overpass Nerd Font", sans-serif;
+  font-size: 15px;
+  color: #e0e0e0;
 }
 
 window {
-  border: 5px solid @blue_border;
-  border-radius: 20px;
+  border: 2px solid #2C9FB5;
+  border-radius: 16px;
+  background: #0d0d0d;
+  padding: 12px;
 }
 
 #input {
-  margin-bottom: 15px;
-  padding: 3px;
-  border-radius: 5px;
-  border: none;
-  background: black;
-  font-size: 32px;
-  color: @primary_blue;
-}
-
-#inner-box {
-  background-color: @base_alt;
-  box-shadow: -4px -3px 45px 21px rgba(0, 0, 0, 0.35);
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #2C9FB5;
+  background: #1a1a1a;
+  font-size: 16px;
+  color: #e0e0e0;
 }
 
 #outer-box {
-  margin: 5px;
-  padding: 10px;
-  background-color: @base;
-  border-radius: 15px;
+  background: #0d0d0d;
+  border-radius: 12px;
+  padding: 6px;
 }
 
-#text {
-  padding: 5px;
-  color: @primary_blue;
+#inner-box {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 4px;
 }
 
 #entry {
-  padding: 10px;
-}
-
-#entry:nth-child(even) {
-  background-color: @base;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin: 3px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 #entry:selected {
-  background-color: @primary_yellow;
+  background-color: #B08130;
+  color: black;
+}
+
+#text {
+  flex: 1;
+  min-width: 0;
+  max-width: calc(100% - 40px);
+  color: #e0e0e0;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 20px;
+}
+
+#entry:selected #text {
+  color: black;
+}
+
+#entry arrow {
+  width: 0;
+  min-width: 0;
+  min-height: 0;
+  height: 0;
+  opacity: 0;
+}
+
+#entry img {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  align-self: center;
+  padding-left: 20px;
 }

@@ -32,10 +32,10 @@ launch_app() {
     # Launch the application in the background
     # Use setsid to detach from the terminal session
     if command -v setsid >/dev/null 2>&1; then
-        uwsm app -- "$selected_app" >/dev/null 2>&1 &
+        "$selected_app" >/dev/null 2>&1 &
     else
         # Fallback if setsid is not available
-        uwsm app -- nohup "$selected_app" >/dev/null 2>&1 &
+        nohup "$selected_app" >/dev/null 2>&1 &
         disown
     fi
 }
