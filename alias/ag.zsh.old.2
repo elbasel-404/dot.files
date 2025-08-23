@@ -1,0 +1,95 @@
+# AG (The Silver Searcher) Aliases
+
+# Basic search aliases
+alias ag.find.case.insensitive='ag -i'
+alias ag.find.case.sensitive='ag -s'
+alias ag.find.literal='ag -Q'
+alias ag.find.word.only='ag -w'
+
+# Display options
+alias ag.find.display.only.paths='ag -l'
+alias ag.find.display.only.paths.tree='f() { ag -l "$@" | tree --fromfile --noreport; }; f'
+alias ag.find.display.only.paths.tree.interactive='f() { ag -l "$@" > /tmp/ag_results.txt && ranger --cmd="set show_hidden true" /tmp/ag_results.txt; }; f'
+alias ag.find.display.only.paths.tree.fzf='f() { ag -l "$@" | fzf --preview="bat --color=always {}" --preview-window=right:60%; }; f'
+alias ag.find.display.only.paths.tree.nnn='f() { ag -l "$@" | head -1 | xargs dirname | nnn; }; f'
+alias ag.find.display.paths.without.matches='ag -L'
+alias ag.find.display.count.only='ag -c'
+alias ag.find.display.count.only.tree='f() { ag -c "$@" | tree --fromfile --noreport; }; f'
+alias ag.find.display.count.only.tree.interactive='f() { ag -c "$@" | fzf --ansi; }; f'
+alias ag.find.display.no.filename='ag --nofilename'
+alias ag.find.display.no.line.numbers='ag --nonumbers'
+alias ag.find.display.column.numbers='ag --column'
+alias ag.find.display.only.matching='ag -o'
+alias ag.find.display.with.context='ag -C'
+alias ag.find.display.with.context.tree='f() { ag -C "$@"; }; f'
+alias ag.find.display.stats='ag --stats'
+
+# Context options
+alias ag.find.context.before='ag -B'
+alias ag.find.context.after='ag -A'
+alias ag.find.context.around='ag -C'
+
+# File type restrictions
+alias ag.find.all.files='ag -a'
+alias ag.find.text.only='ag -t'
+alias ag.find.include.hidden='ag --hidden'
+alias ag.find.unrestricted='ag -u'
+alias ag.find.skip.vcs='ag -U'
+
+# Search depth and following
+alias ag.find.follow.symlinks='ag -f'
+alias ag.find.depth.limited='ag --depth'
+alias ag.find.max.count='ag -m'
+
+# Output formatting
+alias ag.find.no.color='ag --nocolor'
+alias ag.find.no.break='ag --nobreak'
+alias ag.find.no.heading='ag --noheading'
+alias ag.find.vim.format='ag --vimgrep'
+alias ag.find.null.separated='ag -0'
+
+# Combined useful aliases
+alias ag.find.files.only='ag -l'
+alias ag.find.count.matches='ag -c'
+alias ag.find.case.smart='ag -S'
+alias ag.find.all.hidden='ag -u'
+alias ag.find.quiet='ag --silent'
+alias ag.find.with.stats='ag --stats'
+
+# Filename pattern matching
+alias ag.find.filename.pattern='ag -g'
+
+# Specific file types (examples)
+alias ag.find.html='ag --html'
+alias ag.find.js='ag --js'
+alias ag.find.css='ag --css'
+alias ag.find.python='ag --python'
+alias ag.find.json='ag --json'
+
+# Advanced combinations
+alias ag.find.case.insensitive.files.only='ag -il'
+alias ag.find.case.insensitive.files.only.tree='f() { ag -il "$@" | tree --fromfile --noreport; }; f'
+alias ag.find.case.insensitive.files.only.tree.interactive='f() { ag -il "$@" | fzf --preview="bat --color=always {}" --preview-window=right:60%; }; f'
+alias ag.find.literal.with.context='ag -Q -C'
+alias ag.find.word.case.insensitive='ag -iw'
+alias ag.find.count.case.insensitive='ag -ic'
+alias ag.find.paths.case.insensitive='ag -il'
+alias ag.find.paths.case.insensitive.tree='f() { ag -il "$@" | tree --fromfile --noreport; }; f'
+alias ag.find.paths.case.insensitive.tree.interactive='f() { ag -il "$@" | fzf --preview="bat --color=always {}" --preview-window=right:60%; }; f'
+
+# Interactive tree browsers
+alias ag.find.browse.ranger='f() { ag -l "$@" | head -1 | xargs dirname | xargs ranger; }; f'
+alias ag.find.browse.nnn='f() { ag -l "$@" | head -1 | xargs dirname | xargs nnn; }; f'
+alias ag.find.browse.lf='f() { ag -l "$@" | head -1 | xargs dirname | xargs lf; }; f'
+alias ag.find.browse.fzf.preview='f() { ag -l "$@" | fzf --preview="bat --color=always --style=numbers --line-range=:500 {}" --preview-window=right:60%; }; f'
+
+# TUI-based interactive displays
+alias ag.find.display.htop.style='f() { ag -l "$@" | nl | fzf --ansi --bind="enter:execute(bat {2})" --preview="bat --color=always {2}" --header="Press ENTER to view file"; }; f'
+alias ag.find.display.menu='f() { ag -l "$@" | nl | while read n file; do echo "$n) $file"; done | fzf --bind="enter:execute(bat {2..})"; }; f'
+
+# Invert matches
+alias ag.find.invert.match='ag -v'
+
+# Binary and compressed files
+alias ag.find.binary='ag --search-binary'
+alias ag.find.compressed='ag -z'

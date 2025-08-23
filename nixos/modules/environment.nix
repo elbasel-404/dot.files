@@ -6,6 +6,7 @@
 
   environment.systemPackages = with pkgs; [
     # ! --- Nix & Dev Tools ---
+    ranger # tui file manager
     # pciutils
     # new START
     # gsettings-qt # Qt-based settings for GNOME
@@ -48,8 +49,8 @@
     # lxqt.lxqt-policykit
 
     # new END
-    # hyprls # language server for Hyprland, providing code intelligence and autocompletion for Hyprland configuration files.
-    # hyprshell # window switcher
+    hyprls # language server for Hyprland, providing code intelligence and autocompletion for Hyprland configuration files.
+    hyprshell # window switcher
     nil # Nix language server (LSP) for providing code intelligence for Nix expressions.
     # devenv # A tool for creating declarative, reproducible, and composable developer environments using Nix.
     # fnm
@@ -78,7 +79,7 @@
     #docker-credential-helpers # Docker credential storage helpers
 
     # ! --- Editors & IDEs ---
-    vscode # Visual Studio Code editor
+    #vscode # Visual Studio Code editor
     neovim # Modern Vim-based text editor
 
     # ! --- Browsers ---
