@@ -34,7 +34,7 @@
   fileSystems."/bin" =
     { device = "/usr/bin";
       fsType = "none";
-      options = [ "bind" ];
+    options = [ "bind" ];
     };
 
   fileSystems."/boot" =
@@ -54,6 +54,50 @@
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = true;
+  hardware.intel-gpu-tools.enable = true;
+  services.throttled.enable = true;
+  # evaluation warning: The option 
+  # `hardware.opengl.enable' has been renamed to `hardware.graphics.enable'.
+  # hardware.opengl.enable = true;
+  services.undervolt.turbo = 1;
+#   hardware.pulseaudio.enable = true;
+#   hardware.pulseaudio.support32Bit = true;
+#   hardware.pulseaudio.defaultSink = "alsa_output.pci-0000_00
+# _1f.3.analog-stereo";
+#   hardware.bluetooth.enable = true;
+#   hardware.bluetooth.autoEnable = true;
+#   hardware.wireless.enable = true;
+#   hardware.enableRedistributableFirmware = true;
+#   hardware.snd-hda-intel.enable = true;
+#   hardware.snd-hda-intel.model = "auto";
+#   hardware.snd-hda-intel.dmic_detect = 0;
+#   hardware.acpi = {
+#     enable = true;
+#     video = true;
+#     thermal = true;
+#   };
+#   hardware.alsa.enable = true;
+#   hardware.alsa.support32Bit = true;
+#   hardware.firmware = [ pkgs.linuxFirmware ];
+#   hardware.btrfs.enable = true;
+#   hardware.btrfs.autoScrub.enable = true;
+#   hardware.btrfs.autoScrub.interval = "weekly";
+#   hardware.btrfs.autoScrub.startTime = "03:00";
+#   hardware.btrfs.autoScrub.devices = [ "/" ];
+#   hardware.btrfs.autoScrub.sendNotifications = true;
+#   hardware.btrfs.autoScrub.threshold = 10;
+#   hardware.btrfs.autoScrub.runOnBattery = false;
+#   hardware.btrfs.autoScrub.verbose = false;
+#   hardware.btrfs.autoScrub.zstdCompressionLevel = 3;
+#   hardware.btrfs.autoScrub.maxDuration = "2h";
+#   hardware.btrfs.autoScrub.exclude = [ ];
+#   hardware.btrfs.autoScrub.excludePatterns = [ ];
+#   hardware.btrfs.autoScrub.include = [ ];
+#   hardware.btrfs.autoScrub.includePatterns = [ ];
+#   hardware.btrfs.autoScrub.logFile = "/var/log/btrfs-auto-s
+# crub.log";
+#   services.udev.packages = [ pkgs.efibootmgr ];
+
 }
 

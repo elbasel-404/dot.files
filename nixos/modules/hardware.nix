@@ -4,20 +4,19 @@
   #hardware.enableRedistributableFirmware = true;
   hardware.graphics.enable = true;
   hardware.graphics.package = pkgs.mesa;
-  #hardware.cpu.intel.updateMicrocode = true;
-  # hardware.graphics.extraPackages = with pkgs; [
-  #   # Provides VA-API hardware acceleration for video encoding/decoding on Intel GPUs.
+  hardware.graphics.extraPackages = with pkgs; [
+  # Provides VA-API hardware acceleration for video encoding/decoding on Intel GPUs.
   #   # Improves performance and efficiency for video playback and processing.
-  #   intel-media-driver # For VA-API hardware acceleration on Intel
-  #   intel-vaapi-driver
-  #   vaapiVdpau
-  #   intel-compute-runtime
-  #   vpl-gpu-rt # newer hardware
-  #   intel-ocl
+    intel-media-driver # For VA-API hardware acceleration on Intel
+    intel-vaapi-driver
+    #vaapiVdpau
+    intel-compute-runtime
+    vpl-gpu-rt # newer hardware
+    intel-ocl
   #   mesa
-  #   vulkan-loader
-  #   vulkan-validation-layers
-  #   # vaapiIntel         # Older VA-API driver, intel-media-driver is preferred
-  #   # libvdpau-va-gl     # VDPAU-VA-API backend
-  # ];
+    vulkan-loader
+    vulkan-validation-layers
+    #vaapiIntel         # Older VA-API driver, intel-media-driver is preferred
+    libvdpau-va-gl     # VDPAU-VA-API backend
+  ];
 }

@@ -1,6 +1,6 @@
 # { pkgs, ... }:
 {
-  services.ollama.enable = true;
+  services.ollama.enable = false;
   services.ollama.acceleration = false;
   #services.timesyncd.enable = true;
   #services.libinput.enable = true;
@@ -16,7 +16,7 @@
   # services.xserver.xkb.layout = "us,ara";
   # services.xserver.xkb.options = "grp:alt_shift_toggle";
   # services.hypridle.enable = true;
-  #services.thermald.enable = false;
+  services.thermald.enable = true;
   #services.power-profiles-daemon.enable = false;
   # services.xserver.videoDrivers = [ "intel" ];
   # services.xserver.deviceSection = ''
@@ -24,7 +24,7 @@
   # '';
 
   # services.swapspace.enable = false;
-  services.auto-cpufreq.enable = true;
+  # services.auto-cpufreq.enable = true;
   services.upower.enable = true;
   # services.auto-cpufreq.settings = {
   #   battery = {

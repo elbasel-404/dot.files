@@ -4,7 +4,10 @@
 {
   imports = [
     # ./modules/disabled.nix
+    <nixos-hardware/lenovo/ideapad/15alc6>
+    <nixos-hardware/lenovo/ideapad/slim-5>
     ./hardware-configuration.nix
+    ./modules/gnome.nix
     ./modules/qt.nix
     ./modules/nix.nix
     ./modules/nixPkgs.nix

@@ -2,7 +2,7 @@
 {
 
   # environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
     # ! --- Nix & Dev Tools ---
@@ -34,7 +34,8 @@
     # gnome-text-editor # GNOME text editor
     # pavucontrol # PulseAudio volume control GUI
     # walker # A tool for managing and navigating Nix packages and environments.
-    # nwg-look # A tool for managing GTK themes, icons, and cursors in a user-friendly way.
+    nwg-look # A tool for managing GTK themes, icons, and cursors in a user-friendly way.
+    hyprcursor # A cursor theme manager for Hyprland (Wayland) that allows easy switching and customization of cursor themes.
     # swaynotificationcenter
     # seahorse # GNOME password manager
     # nautilus # GNOME file manager
@@ -54,7 +55,7 @@
     nil # Nix language server (LSP) for providing code intelligence for Nix expressions.
     # devenv # A tool for creating declarative, reproducible, and composable developer environments using Nix.
     # fnm
-    nixfmt-rfc-style # The official Nix code formatter, adhering to RFC 166 style guidelines, for consistent Nix code.
+    #nixfmt-rfc-style # The official Nix code formatter, adhering to RFC 166 style guidelines, for consistent Nix code.
     corepack # A Node.js tool that manages package manager versions (like npm, yarn, pnpm) for projects.
     nodejs # JavaScript runtime environment built on Chrome's V8 engine, for executing JavaScript code outside a browser.
     # nodejs_24
@@ -116,12 +117,10 @@
     # grim
     wofi # Application launcher for Wayland
     wl-clipboard # Command-line copy/paste for Wayland
-    ripgrep
     fd
 
     # ! --- KDE & Qt ---
     #kdePackages.dolphin # KDE file manager
-    # kdePackages.spectacle # KDE screenshot tool
     # kdePackages.breeze-gtk # GTK theme for KDE Breeze
     # kdePackages.breeze-icons # Icon theme for KDE Breeze
     # kdePackages.qt6ct # Qt6 configuration tool
