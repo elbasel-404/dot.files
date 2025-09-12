@@ -20,10 +20,11 @@ for module in "$DIR/modules"/*.nix; do
   FILES+=("$module")
 done
 
-# Append each file's content
+# Append each file's content (strip comments)
 for file in "${FILES[@]}"; do
   echo "# BEGIN $file" >> "$OUT"
-  cat "$file" >> "$OUT"
+  # Strip lines that start with # (comments), but keep empty lines
+  grep -v '^[[:space:]]*#' "$file" >> "$OUT"
   echo -e "\n# END $file\n" >> "$OUT"
 done
 
