@@ -1,181 +1,166 @@
 { pkgs, ... }:
 {
 
-  # environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
-    # ! --- Nix & Dev Tools ---
-    ranger # tui file manager
+    # === neovim stuff === 
+    prettierd
+    eslint_d
+    nil
+    luarocks
+    lua5_1
+    tree-sitter
+    typescript-language-server
+    # ===
+
+    git-filter-repo
+    python314
+    lazygit
+    gcc
+    brave
+    google-chrome
+    chromium
+    ranger
+    vscode
+    terminator
+    nodePackages_latest.vercel 
+    corepack
+    nodejs
+    git
+    gh
+    neovim
+    firefox-bin
+    mpv
+    tree
+    unzip
+    fzf
+    tldr
+    eza
+    dust
+    fd
+    ripgrep
+    silver-searcher
+    zsh-completions
+    obs-studio
+    wget
+    postman
+    deluge
+    ffmpeg
+    jq
+    bat
+    kitty
+    starship
+    wofi
+    cava
+    quickemu # vms
+    atuin # shell history
+    grimblast # screenshot tool
+    brightnessctl # cli brightness control
+    playerctl # cli media controller
+    btop # resource monitor
+    acpi # show battery status
+    clipse # clipboard manager for Wayland
+    swappy # screenshot editing tool
+    nil # language server for nix lang
+    wl-clipboard # command-line copy/paste for Wayland
+    hyprls # hyprland language server
+
     # pciutils
-    # new START
-    # gsettings-qt # Qt-based settings for GNOME
+    # gsettings-qt 
     # komorebi
-    # flatpak
     # gnome-software
     # xorg.xcursorthemes
-    # gsettings-desktop-schemas # Schemas for GNOME desktop settings
-    # gnome.nixos-gsettings-overrides # NixOS overrides for GNOME settings
-    # libreoffice-qt6-fresh # office apps
+    # gsettings-desktop-schemas 
+    # gnome.nixos-gsettings-overrides
+    # libreoffice-qt6-fresh 
     # net-tools
     # libnotify
     # pamixer
     # yad
-    #cava
     # quickgui
-    networkmanagerapplet # Applet for managing network connections in GNOME
-    # dig # network tool
-    # ayu-theme-gtk # Ayu GTK theme for a clean and modern look
-    # gruvbox-kvantum # Gruvbox Kvantum theme for a retro groove color scheme
-    # gtk-engine-murrine # Murrine GTK engine for custom themes
-    # gruvbox-gtk-theme # Gruvbox GTK theme for a retro groove color scheme
-    # gnome-themes-extra # Extra GNOME themes
-    # gnome-calculator # GNOME calculator application
-    # gnome-text-editor # GNOME text editor
-    # pavucontrol # PulseAudio volume control GUI
-    # walker # A tool for managing and navigating Nix packages and environments.
-    nwg-look # A tool for managing GTK themes, icons, and cursors in a user-friendly way.
-    hyprcursor # A cursor theme manager for Hyprland (Wayland) that allows easy switching and customization of cursor themes.
+    # networkmanagerapplet
+    # dig
+    # ayu-theme-gtk
+    # gruvbox-kvantum
+    # gtk-engine-murrine
+    # gruvbox-gtk-theme
+    # gnome-themes-extra
+    # gnome-calculator
+    # gnome-text-editor
+    # pavucontrol
+    # walker
+    # nwg-look
+    # hyprcursor
     # swaynotificationcenter
-    # seahorse # GNOME password manager
-    # nautilus # GNOME file manager
+    # seahorse
+    # nautilus
     # xfce.xfce4-icon-theme
     # arc-theme
-    #satty
-    # hyprshot # A screenshot tool for Hyprland (Wayland) that allows capturing screenshots with various options.
+    # satty
+    # hyprshot
     # powertop
-    # shfmt # format shell files
-    # shellcheck # sh file checking
-    # bash-language-server # language server for bash
+    # shfmt
+    # shellcheck
+    # bash-language-server
     # lxqt.lxqt-policykit
-
-    # new END
-    hyprls # language server for Hyprland, providing code intelligence and autocompletion for Hyprland configuration files.
-    hyprshell # window switcher
-    nil # Nix language server (LSP) for providing code intelligence for Nix expressions.
-    # devenv # A tool for creating declarative, reproducible, and composable developer environments using Nix.
+    # hyprshell 
     # fnm
-    #nixfmt-rfc-style # The official Nix code formatter, adhering to RFC 166 style guidelines, for consistent Nix code.
-    corepack # A Node.js tool that manages package manager versions (like npm, yarn, pnpm) for projects.
-    nodejs # JavaScript runtime environment built on Chrome's V8 engine, for executing JavaScript code outside a browser.
+    # nixfmt-rfc-style
     # nodejs_24
     # nodejs-slim_24
-    # bun # A fast all-in-one JavaScript runtime, bundler, transpiler, and package manager.
-    # typescript # A superset of JavaScript that adds static typing, enhancing code quality and maintainability.
-    # typescript-language-server # A language server that provides TypeScript and JavaScript language features to code editors.
-    # eslint # A pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript and TypeScript code.
-    # eslint_d # A daemonized version of ESLint that provides faster linting by keeping ESLint running in the background.
-    # prettierd # A daemonized version of Prettier, a code formatter, for faster code formatting.
-    nodePackages_latest.vercel # The Vercel CLI, used for deploying web projects to the Vercel platform.
+    # bun
+    # typescript
+    # typescript-language-server
+    # eslint
+    # eslint_d
+    # prettierd
     # pipx
-    # python313 # The Python 3.13 interpreter.
-    # python313Packages.yowsup # A Python library for creating WhatsApp clients, specifically for Python 3.13.
-    # python311Packages.pip # The package installer for Python, used to install and manage Python packages (for Python 3.11 in this case).
-    # zig # Programming language and toolchain
-    # gcc # GNU Compiler Collection
-    git # Distributed version control system
-    gh # GitHub CLI tool
-    gof5 # Open source F5 BIG-IP VPN client for Linux, MacOS, FreeBSD, Windows
-    # openconnect_openssl # OpenConnect VPN client (with OpenSSL)
-    #docker-credential-helpers # Docker credential storage helpers
-
-    # ! --- Editors & IDEs ---
-    #vscode # Visual Studio Code editor
-    neovim # Modern Vim-based text editor
-
-    # ! --- Browsers ---
-    #google-chrome # Web browser by Google
-    quickemu
-    #brave # Privacy-focused web browser
-    firefox-bin # Mozilla web browser
-    # grim # screenshot tool
-    # chromium # Open-source web browser project
-
-    # ! --- Media & Graphics ---
-    mpv # Media player
-    # vlc # Versatile media player
-    # webtorrent_desktop # Streaming torrent client
-    obs-studio # Open source video recording and streaming
-    eww
+    # python313
+    # python313Packages.yowsup
+    # python311Packages.pip
+    # zig
+    # openconnect_openssl
+    # docker-credential-helpers
+    # grim
+    # vlc
+    # webtorrent_desktop
+    # eww
     # file
     # mediainfo
-
-    # ! --- Networking & Remote ---
-    # ddgr # DuckDuckGo search from the command line
-    wget # Network downloader
-    # traceroute # Network diagnostic tool
-    # anydesk # Remote desktop application
-    postman # API testing tool
-    # azure-cli # Microsoft Azure command-line interface
-    deluge # BitTorrent client
-
-    # ! --- Hyprland & Wayland ---
-    # wl-clip-persist # Keeps Wayland clipboard after program exit
-    hyprpaper # Fast wallpaper utility for Hyprland (Wayland)
-    hyprpolkitagent # Polkit authentication agent for Hyprland, written in QT/QML
-    grimblast # Screenshot helper for Hyprland (Wayland)
-    # grim
-    wofi # Application launcher for Wayland
-    wl-clipboard # Command-line copy/paste for Wayland
-    fd
-
-    # ! --- KDE & Qt ---
-    #kdePackages.dolphin # KDE file manager
-    # kdePackages.breeze-gtk # GTK theme for KDE Breeze
-    # kdePackages.breeze-icons # Icon theme for KDE Breeze
-    # kdePackages.qt6ct # Qt6 configuration tool
-    # libsForQt5.qt5ct # Qt5 configuration tool
-
-    # ! --- System Utilities ---
-    # gum # A tool for creating interactive command-line prompts and menus
-    # peaclock # A simple, customizable clock for the terminal
-    atuin # Command-line shell history manager with search and sync capabilities
-    ffmpeg # Multimedia framework for handling video, audio, and other multimedia files
-    # shellcheck # Shell script analysis tool
-    # shfmt # Shell script formatter
-    jq # Command-line JSON processor
-    bat # A cat clone with syntax highlighting and Git integration
-    kitty # Terminal emulator
-    #terminator
-    # glibc # GNU C Library, core C runtime for Linux
-    brightnessctl # Control device brightness from the command line
-    playerctl # Command-line controller for media players
-    # smartmontools # Tools for monitoring SMART-enabled hard drives
-    # lm_sensors # Hardware health monitoring (sensors)
-    starship # Cross-shell prompt for minimal, fast, informative shell prompts
-    # neofetch # System information tool
-    # gparted # GNOME partition editor
-    acpi # Show battery and ACPI information
-    btop # Resource monitor
-    # htop # Interactive process viewer
-    # glances # Cross-platform system monitoring tool
-    tree # Directory listing in tree format
-    unzip # Extract compressed .zip files
-    fzf # Fuzzy finder for the command line
-    tldr # Simplified and community-driven man pages
-    eza # Modern replacement for 'ls' command
-    dust # More intuitive version of 'du' for disk usage
-    fd # Simple, fast and user-friendly alternative to 'find'
-    ripgrep # Fast search tool (like grep)
-    silver-searcher # Fast code-searching tool, similar to ack
-    # glow # Terminal markdown reader
-    clipse # Terminal-based clipboard manager (TUI) for Unix
-    swappy # screenshot editing tool
-    # koboldcpp # Easy-to-use AI text-generation software for GGML/GGUF models
-    nautilus # file manager
-    # aider-chat # AI coding assistant for working with codebases
-
-    # ! zsh
-    zsh-completions # Additional Zsh completions for various commands
-
-    # ! --- hacking ---
+    # ddgr
+    # traceroute
+    # anydesk
+    # azure-cli
+    # wl-clip-persist
+    # hyprpaper
+    # hyprpolkitagent
+    # kdePackages.dolphin
+    # kdePackages.breeze-gtk
+    # kdePackages.breeze-icons
+    # kdePackages.qt6ct
+    # libsForQt5.qt5ct
+    # gum
+    # peaclock
+    # shellcheck
+    # shfmt
+    # glibc
+    # smartmontools
+    # lm_sensors
+    # neofetch
+    # gparted
+    # htop
+    # glances
+    # glow
+    # koboldcpp
+    # nautilus
+    # aider-chat
     # android-tools
-    # nmap # Network exploration tool and security/port scanner
-    # miniupnpc # MiniUPnP client and server library
-    # gupnp-tools # GUPnP tools for UPnP devices
+    # nmap
+    # miniupnpc
+    # gupnp-tools
     # python313Packages.websocket-client
-    # python313Packages.samsungctl # A Python library for controlling Samsung Smart TVs.
-
+    # python313Packages.samsungctl
   ];
-
+  # environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 }

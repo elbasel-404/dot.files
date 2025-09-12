@@ -1,9 +1,7 @@
 # /etc/nixos/configuration.nix
-#
 { ... }:
 {
   imports = [
-    # ./modules/disabled.nix
     <nixos-hardware/lenovo/ideapad/15alc6>
     <nixos-hardware/lenovo/ideapad/slim-5>
     ./hardware-configuration.nix
@@ -29,11 +27,4 @@
     ./modules/zram.nix
     ./modules/systemd.nix
   ];
-
-  # swapDevices = [
-  #   {
-  #     device = "/swapfile";
-  #     size = 16 * 1024; # 16GB
-  #   }
-  # ];
 }

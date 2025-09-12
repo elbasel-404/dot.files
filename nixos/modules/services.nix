@@ -1,7 +1,13 @@
 # { pkgs, ... }:
 {
-  services.ollama.enable = false;
-  services.ollama.acceleration = false;
+  services.thermald.enable = true;
+  services.earlyoom.enable = true;
+  services.flatpak.enable = true;
+  services.upower.enable = true;
+  services.envfs.enable = true;
+
+  services.ollama.enable = true;
+  #services.ollama.acceleration = true;
   #services.timesyncd.enable = true;
   #services.libinput.enable = true;
   #services.xserver.enable = false;
@@ -9,14 +15,11 @@
   #services.pipewire.pulse.enable = true;
   #services.xserver.displayManager.lightdm.enable = false;
   #services.blueman.enable = true;
-  services.flatpak.enable = true;
   # services.gnome.gnome-keyring.enable = true;
   # security.pam.services.gdm-password.enableGnomeKeyring = true;
-  services.earlyoom.enable = true;
   # services.xserver.xkb.layout = "us,ara";
   # services.xserver.xkb.options = "grp:alt_shift_toggle";
   # services.hypridle.enable = true;
-  services.thermald.enable = true;
   #services.power-profiles-daemon.enable = false;
   # services.xserver.videoDrivers = [ "intel" ];
   # services.xserver.deviceSection = ''
@@ -25,7 +28,6 @@
 
   # services.swapspace.enable = false;
   # services.auto-cpufreq.enable = true;
-  services.upower.enable = true;
   # services.auto-cpufreq.settings = {
   #   battery = {
   #     governor = "powersave";
@@ -56,5 +58,4 @@
   #   CPU_SCALING_GOVERNOR_ON_AC = "performance";
   # };
   # services.gvfs.enable = true;
-  services.envfs.enable = true;
 }

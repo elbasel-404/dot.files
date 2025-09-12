@@ -8,8 +8,13 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ ];
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  networking.useDHCP = lib.mkDefault true;
+  hardware.cpu.intel.updateMicrocode = true;
+  swapDevices = [ ];
+  # hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "sdhci_pci" "usb_storage" "sd_mod" ];  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
@@ -43,28 +48,17 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  swapDevices = [ ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = true;
-  hardware.intel-gpu-tools.enable = true;
-  services.throttled.enable = true;
+  # hardware.intel-gpu-tools.enable = true;
+  # services.throttled.enable = true;
   # evaluation warning: The option 
   # `hardware.opengl.enable' has been renamed to `hardware.graphics.enable'.
   # hardware.opengl.enable = true;
-  services.undervolt.turbo = 1;
+  # services.undervolt.turbo = 1;
 #   hardware.pulseaudio.enable = true;
 #   hardware.pulseaudio.support32Bit = true;
-#   hardware.pulseaudio.defaultSink = "alsa_output.pci-0000_00
-# _1f.3.analog-stereo";
+#   hardware.pulseaudio.defaultSink = "alsa_output.pci-0000_001f.3.analog-stereo";
 #   hardware.bluetooth.enable = true;
 #   hardware.bluetooth.autoEnable = true;
 #   hardware.wireless.enable = true;
@@ -95,9 +89,7 @@
 #   hardware.btrfs.autoScrub.excludePatterns = [ ];
 #   hardware.btrfs.autoScrub.include = [ ];
 #   hardware.btrfs.autoScrub.includePatterns = [ ];
-#   hardware.btrfs.autoScrub.logFile = "/var/log/btrfs-auto-s
-# crub.log";
+#   hardware.btrfs.autoScrub.logFile = "/var/log/btrfs-auto-scrub.log";
 #   services.udev.packages = [ pkgs.efibootmgr ];
-
 }
 

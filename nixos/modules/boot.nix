@@ -1,13 +1,8 @@
 { pkgs, ... }:
 {
-  # Allows NixOS to modify EFI variables in the system's firmware.
-  # Enabling this is convenient for automatic boot entry updates,
-  # but can sometimes cause issues with buggy firmware.
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.systemd-boot.enable = true;
-
-
   boot.tmp.cleanOnBoot = true;
 
   # Kernel modules to be included in the initrd.
@@ -52,8 +47,4 @@
   # These can control various kernel behaviors or enable specific features.
   # "cgroup_enable=cpuset" enables the cpuset cgroup functionality.
   # boot.kernelParams = [  ];
-
-  # Specifies the kernel package to use.
-  # pkgs.linuxPackages_zen refers to a kernel optimized for desktop performance.
-  boot.kernelPackages = pkgs.linuxPackages_zen;
 }

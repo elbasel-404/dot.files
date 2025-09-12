@@ -6,6 +6,8 @@ for file in "$ALIAS_DIR"/*; do
   fi
 done
 
+alias gnome="exec dbus-run-session gnome-session"
+
 #_volume
 alias vol.down="wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@"
 alias vol.up="wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wpctl get-volume @DEFAULT_AUDIO_SINK@"
