@@ -1,26 +1,49 @@
 #compdef ollama
 
-# Function to fetch and return model names from 'ollama list'
+# Fetch installed models
 _fetch_ollama_models() {
     local -a models
     local output="$(ollama list 2>/dev/null | sed 's/:/\\:/g')"  # Escape colons for zsh
     if [[ -z "$output" ]]; then
-        _message "no models available or 'ollama list' failed"
         return 1
     fi
     models=("${(@f)$(echo "$output" | awk 'NR>1 {print $1}')}")
-    if [[ ${#models} -eq 0 ]]; then
-        _message "no models found"
-        return 1
-    fi
-    _describe 'model names' models
+    [[ ${#models} -eq 0 ]] && return 1
+    echo $models
 }
 
-# Main completion function
+# Fetch running models
+_fetch_running_ollama_models() {
+    local -a models
+    local output="$(ollama ps 2>/dev/null | sed 's/:/\\:/g')"
+    if [[ -z "$output" ]]; then
+        return 1
+    fi
+    models=("${(@f)$(echo "$output" | awk 'NR>1 {print $1}')}")
+    [[ ${#models} -eq 0 ]] && return 1
+    echo $models
+}
+
+# Describe installed models
+_complete_installed_models() {
+    local -a models
+    models=($(_fetch_ollama_models))
+    (( ${#models} )) && _describe 'installed models' models
+}
+
+# Describe running models
+_complete_running_models() {
+    local -a models
+    models=($(_fetch_running_ollama_models))
+    (( ${#models} )) && _describe 'running models' models
+}
+
 _ollama() {
     local -a commands
 
     _arguments -C \
+        '(-h --help)'{-h,--help}'[Show help information]' \
+        '(-v --version)'{-v,--version}'[Show version information]' \
         '1: :->command' \
         '*:: :->args'
 
@@ -28,12 +51,14 @@ _ollama() {
         command)
             commands=(
                 'serve:Start ollama'
-                'create:Create a model from a Modelfile'
+                'create:Create a model'
                 'show:Show information for a model'
                 'run:Run a model'
+                'stop:Stop a running model'
                 'pull:Pull a model from a registry'
                 'push:Push a model to a registry'
                 'list:List models'
+                'ps:List running models'
                 'cp:Copy a model'
                 'rm:Remove a model'
                 'help:Help about any command'
@@ -62,7 +87,7 @@ _ollama() {
                         '--template[Show template of a model]' \
                         '*::model:->model'
                     if [[ $state == model ]]; then
-                        _fetch_ollama_models
+                        _complete_installed_models
                     fi
                 ;;
                 run)
@@ -73,8 +98,16 @@ _ollama() {
                         '--verbose[Show verbose output]' \
                         '*::model and prompt:->model_and_prompt'
                     if [[ $state == model_and_prompt ]]; then
-                        _fetch_ollama_models
+                        _complete_running_models
+                        _complete_installed_models
                         _message "enter prompt"
+                    fi
+                ;;
+                stop)
+                    _arguments \
+                        '*::running models:->running_models'
+                    if [[ $state == running_models ]]; then
+                        _complete_running_models
                     fi
                 ;;
                 pull|push)
@@ -82,26 +115,29 @@ _ollama() {
                         '--insecure[Use an insecure registry]' \
                         '*::model:->model'
                     if [[ $state == model ]]; then
-                        _fetch_ollama_models
+                        _complete_installed_models
                     fi
                 ;;
                 list)
-                    _message "no additional arguments for list"
+                    _message "no additional arguments"
+                ;;
+                ps)
+                    _message "no additional arguments (shows running models)"
                 ;;
                 cp)
                     _arguments \
-                        '1:source model:_fetch_ollama_models' \
-                        '2:target model:_fetch_ollama_models'
+                        '1:source model:_complete_installed_models' \
+                        '2:target model:_complete_installed_models'
                 ;;
                 rm)
                     _arguments \
                         '*::models:->models'
                     if [[ $state == models ]]; then
-                        _fetch_ollama_models
+                        _complete_installed_models
                     fi
                 ;;
                 help)
-                    _message "no additional arguments for help"
+                    _message "no additional arguments"
                 ;;
             esac
         ;;

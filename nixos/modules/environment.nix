@@ -4,8 +4,7 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
-    # === neovim stuff === 
-    discord
+    #! neovim
     prettierd
     eslint_d
     nil
@@ -13,13 +12,21 @@
     lua5_1
     tree-sitter
     typescript-language-server
-    # ===
 
-    # === hacking ===
+    #! hyprland
+    poweralertd
+    mako
+    powertop
+    hyprls
+    mako
+    libnotify
+
+    #! hacking
     nmap
     parallel
-    # === 
 
+    #! ============================================= 
+    discord
     uv
     zx
     bun
@@ -62,18 +69,17 @@
     starship
     wofi
     cava
-    quickemu # vms
-    atuin # shell history
-    grimblast # screenshot tool
-    brightnessctl # cli brightness control
-    playerctl # cli media controller
-    btop # resource monitor
-    acpi # show battery status
-    clipse # clipboard manager for Wayland
-    swappy # screenshot editing tool
-    nil # language server for nix lang
-    wl-clipboard # command-line copy/paste for Wayland
-    hyprls # hyprland language server
+    quickemu
+    atuin
+    grimblast
+    brightnessctl
+    playerctl
+    btop
+    acpi
+    clipse
+    swappy
+    nil
+    wl-clipboard 
 
     # pciutils
     # gsettings-qt 
@@ -108,7 +114,6 @@
     # arc-theme
     # satty
     # hyprshot
-    # powertop
     # shfmt
     # shellcheck
     # bash-language-server
