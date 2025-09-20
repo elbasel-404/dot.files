@@ -20,6 +20,7 @@
     hyprls
     mako
     libnotify
+    wl-clip-persist
 
     #! hacking
     nmap
