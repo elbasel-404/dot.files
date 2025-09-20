@@ -5,7 +5,7 @@
   services.flatpak.enable = true;
   services.upower.enable = true;
   services.envfs.enable = true;
-
+  services.openssh.enable = true;
   services.ollama.enable = true;
   #services.ollama.acceleration = true;
   #services.timesyncd.enable = true;

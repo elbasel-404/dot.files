@@ -26,7 +26,9 @@
     nmap
     parallel
 
-    #! ============================================= 
+    #! =============================================
+    nixd
+    nixfmt-rfc-style
     discord
     uv
     zx
@@ -41,7 +43,7 @@
     ranger
     vscode
     terminator
-    nodePackages_latest.vercel 
+    nodePackages_latest.vercel
     corepack
     nodejs
     git
@@ -79,17 +81,16 @@
     acpi
     clipse
     swappy
-    nil
-    wl-clipboard 
+    wl-clipboard
 
     # pciutils
-    # gsettings-qt 
+    # gsettings-qt
     # komorebi
     # gnome-software
     # xorg.xcursorthemes
-    # gsettings-desktop-schemas 
+    # gsettings-desktop-schemas
     # gnome.nixos-gsettings-overrides
-    # libreoffice-qt6-fresh 
+    # libreoffice-qt6-fresh
     # net-tools
     # libnotify
     # pamixer
@@ -119,7 +120,7 @@
     # shellcheck
     # bash-language-server
     # lxqt.lxqt-policykit
-    # hyprshell 
+    # hyprshell
     # fnm
     # nixfmt-rfc-style
     # nodejs_24
