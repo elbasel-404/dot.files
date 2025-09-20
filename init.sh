@@ -27,5 +27,8 @@ ln -srf clipse ~/.config/clipse
 # ! 9- nvim
 ln -srf nvim ~/.config/nvim
 
-# ! 9- waybar
+# ! 10- waybar
 ln -srf waybar ~/.config/waybar
+
+# ! 11- mako
+ln -srf mako ~/.config/mako

@@ -13,7 +13,6 @@ return {
       if parsers_ok and type(parsers.has_parser) == "function" then
         return parsers.has_parser(ft)
       end
-      -- fallback: try to get parser
       local ok = pcall(ts.get_parser, 0, ft)
       return ok
     end
@@ -24,6 +23,7 @@ return {
         { name = "FIX",     fg = "white", bg = "#f44747", bold = true,  virtual_text = " ← FIX" },
         { name = "WARNING", fg = "#FFA500", bg = "",      bold = false, virtual_text = " ← WARNING" },
         { name = "!",       fg = "#f44747", bg = "",      bold = true },
+        { name = "*", fg = "#90EE90", bg = "", bold = false },
       },
     }
 
@@ -58,21 +58,25 @@ return {
       return tree:root()
     end
 
-    local function highlight_buffer(buf)
-      if not api.nvim_buf_is_loaded(buf) then return end
-      local ft = api.nvim_buf_get_option(buf, "filetype")
-      if not has_parser(ft) then return end
+    local function clear_all_namespaces(buf)
+      for _, tag in ipairs(opts.tags) do
+        local ns = ns_for(tag.name)
+        api.nvim_buf_clear_namespace(buf, ns, 0, -1)
+      end
+    end
+
+    -- Treesitter-based highlighter (returns true if it highlighted anything)
+    local function highlight_with_ts(buf, ft)
+      if not has_parser(ft) then return false end
 
       local okq, query = pcall(ts.query.parse, ft, "(comment) @all")
-      if not okq or not query then return end
+      if not okq or not query then return false end
 
       local root = get_root(buf, ft)
-      if not root then return end
+      if not root then return false end
 
-      -- collect comments
       local comments = {}
       for _, node in query:iter_captures(root, buf, 0, -1) do
-        -- node:range() -> start_row, start_col, end_row, end_col
         local range = { node:range() }
         table.insert(comments, {
           line = range[1],
@@ -82,21 +86,14 @@ return {
         })
       end
 
-      -- clear previous extmarks/highlights for our namespaces
-      for _, tag in ipairs(opts.tags) do
-        local ns = ns_for(tag.name)
-        api.nvim_buf_clear_namespace(buf, ns, 0, -1)
-      end
+      if #comments == 0 then return false end
 
-      if #comments == 0 then return end
       create_hl(opts.tags)
-
       for id, comment in ipairs(comments) do
         for hl_id, hl in ipairs(opts.tags) do
-          if type(comment.text) == "string" and string.find(comment.text, hl.name) then
+          if type(comment.text) == "string" and string.find(comment.text, hl.name, 1, true) then
             local ns = ns_for(hl.name)
 
-            -- virtual text: use eol for stability
             if hl.virtual_text and hl.virtual_text ~= "" then
               api.nvim_buf_set_extmark(buf, ns, comment.line, 0, {
                 id = (id * 1000) + hl_id,
@@ -105,10 +102,110 @@ return {
               })
             end
 
-            -- add highlight using the group created earlier
-            api.nvim_buf_add_highlight(buf, ns, hl._group, comment.line,
-              comment.col_start, comment.finish)
+            api.nvim_buf_add_highlight(buf, ns, hl._group, comment.line, comment.col_start, comment.finish)
           end
+        end
+      end
+
+      return true
+    end
+
+    -- Fallback for any filetype (incl. those without Treesitter, e.g. .conf)
+    local function highlight_with_fallback(buf)
+      if not api.nvim_buf_is_loaded(buf) then return false end
+
+      local function trim(s)
+        return (s:gsub("^%s+", "")), (#s - #s:gsub("^%s+", ""))
+      end
+
+      -- Try to derive a line comment leader from 'commentstring'
+      local cs = api.nvim_buf_get_option(buf, "commentstring") or ""
+      local leader = ""
+      if cs:find("%%s", 1, true) then
+        leader = cs:sub(1, cs:find("%%s", 1, true) - 1)
+        leader = leader:gsub("%s+$", "")
+      end
+
+      -- Common line comment leaders as safety net (covers .conf: "#", ";")
+      local leaders = {}
+      local seen = {}
+      local function add_leader(l)
+        if l and l ~= "" and not seen[l] then leaders[#leaders + 1] = l; seen[l] = true end
+      end
+      add_leader(leader)
+      add_leader("#")
+      add_leader(";")
+      add_leader("//")
+      add_leader("--")
+      add_leader("%")   -- e.g. TeX
+      add_leader('"')   -- e.g. Vimscript
+
+      local line_count = api.nvim_buf_line_count(buf)
+      local found_any = false
+      create_hl(opts.tags)
+
+      for lnum = 0, line_count - 1 do
+        local line = api.nvim_buf_get_lines(buf, lnum, lnum + 1, false)[1] or ""
+        local trimmed, indent = trim(line)
+        local used_leader, comment_col = nil, nil
+
+        for _, ldr in ipairs(leaders) do
+          if ldr ~= "" and trimmed:sub(1, #ldr) == ldr then
+            used_leader = ldr
+            comment_col = indent -- highlight whole comment from its leader
+            break
+          end
+        end
+
+        if used_leader then
+          for hl_id, hl in ipairs(opts.tags) do
+            if trimmed:find(hl.name, 1, true) then
+              found_any = true
+              local ns = ns_for(hl.name)
+
+              if hl.virtual_text and hl.virtual_text ~= "" then
+                api.nvim_buf_set_extmark(buf, ns, lnum, 0, {
+                  id = (lnum + 1) * 1000 + hl_id,
+                  virt_text = { { hl.virtual_text, hl._group } },
+                  virt_text_pos = "eol",
+                })
+              end
+
+              -- Highlight from the start of the comment leader to end-of-line
+              api.nvim_buf_add_highlight(buf, ns, hl._group, lnum, comment_col, -1)
+            end
+          end
+        end
+      end
+
+      return found_any
+    end
+
+    local function highlight_buffer(buf)
+      if not api.nvim_buf_is_loaded(buf) then return end
+
+      -- clear previous extmarks/highlights for our namespaces
+      clear_all_namespaces(buf)
+
+      local ft = api.nvim_buf_get_option(buf, "filetype")
+      local ok_ts = false
+      local ok, err = pcall(function()
+        ok_ts = highlight_with_ts(buf, ft)
+      end)
+      if not ok then
+        vim.schedule(function()
+          vim.notify("better-comments(ts): " .. tostring(err), vim.log.levels.DEBUG)
+        end)
+      end
+
+      if not ok_ts then
+        local ok_fb, err_fb = pcall(function()
+          highlight_with_fallback(buf)
+        end)
+        if not ok_fb then
+          vim.schedule(function()
+            vim.notify("better-comments(fallback): " .. tostring(err_fb), vim.log.levels.DEBUG)
+          end)
         end
       end
     end
@@ -119,21 +216,18 @@ return {
       group = aug,
       callback = function()
         local buf = api.nvim_get_current_buf()
-        -- safe protect: don't spam on ephemeral buffers
         local name = api.nvim_buf_get_name(buf)
         if name == "" then return end
         local ok, _ = pcall(highlight_buffer, buf)
         if not ok then
-          -- don't spam notifications, but record an entry in :messages for debugging
           vim.schedule(function()
-            vim.notify("better-comments: treesitter query failed for buffer " .. name, vim.log.levels.DEBUG)
+            vim.notify("better-comments: highlight failed for buffer " .. name, vim.log.levels.DEBUG)
           end)
         end
       end,
     })
 
-    -- optional: run once on load for current buffer
+    -- run once on load for current buffer
     pcall(function() highlight_buffer(api.nvim_get_current_buf()) end)
   end,
 }
-
