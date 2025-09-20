@@ -5,6 +5,7 @@
 
   environment.systemPackages = with pkgs; [
     # === neovim stuff === 
+    discord
     prettierd
     eslint_d
     nil
@@ -14,6 +15,14 @@
     typescript-language-server
     # ===
 
+    # === hacking ===
+    nmap
+    parallel
+    # === 
+
+    uv
+    zx
+    bun
     git-filter-repo
     python314
     lazygit
