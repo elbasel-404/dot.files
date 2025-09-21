@@ -17,6 +17,7 @@
     marksman
     stylua
     luajitPackages.lua-lsp
+    shfmt
 
     #! hyprland
     poweralertd
@@ -28,11 +29,16 @@
     wl-clip-persist
     hyprpaper
 
-    #! hacking
+    #! networking
     nmap
-    parallel
+    traceroute
+    dig
+    tcpdump
 
     #! =============================================
+    tmux
+    procs
+    parallel
     glow
     rustc
     cargo
@@ -127,7 +133,6 @@
     # arc-theme
     # satty
     # hyprshot
-    # shfmt
     # shellcheck
     # bash-language-server
     # lxqt.lxqt-policykit
@@ -169,7 +174,6 @@
     # gum
     # peaclock
     # shellcheck
-    # shfmt
     # glibc
     # smartmontools
     # lm_sensors

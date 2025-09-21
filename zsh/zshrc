@@ -1,4 +1,4 @@
- source ~/.profile
+source ~/.profile
 # source ~/.zsh/.pnpm.zsh
 export XDG_SESSION_TYPE=wayland
 export QT_QPA_PLATFORM=wayland
@@ -6,7 +6,6 @@ export GDK_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
 export ELECTRON_OZONE_PLATFORM_HINT=auto
 export NIXOS_OZONE_WAYLAND=1
-
 
 export EDITOR="nvim"
 
@@ -24,21 +23,23 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --layout="reverse" --info="right"'
 
 if [ -n "${commands[fzf - share]}" ]; then
-  source "$(fzf-share)/key-bindings.zsh"
-  source "$(fzf-share)/completion.zsh"
+	source "$(fzf-share)/key-bindings.zsh"
+	source "$(fzf-share)/completion.zsh"
 fi
 
-# ! atuin
 eval "$(atuin init zsh)"
 
-# !already defined in ~/config/nixos/modules/nixPkgs.nix
-# export NIXPKGS_ALLOW_UNFREE=1
+#fpath=($HOME/config/zsh/comp $fpath)
 
-# Created by `pipx` on 2025-07-12 21:18:09
-#export PATH="$PATH:/home/elbasel/.local/bin"
+# autoload -U compinit
+
+# Fast completion loading with caching
+# Only rebuild dump file if older than 24 hours
+# for dump in ~/.zcompdump(N.mh+24); do
+#   compinit
+#   break
+# done
+# # Use cached version for faster startup
+# [[ -f ~/.zcompdump ]] && compinit -C || compinit
 #
-# * completions
-fpath=($HOME/config/zsh/comp $fpath)
-
-autoload -U compinit
-compinit
+#source ~/config/zsh/shell.cmd
