@@ -5,13 +5,18 @@
 
   environment.systemPackages = with pkgs; [
     #! neovim
-    prettierd
+    prettier
+    markdownlint-cli
+    lua51Packages.grug-far-nvim
     eslint_d
     nil
     luarocks
     lua5_1
     tree-sitter
     typescript-language-server
+    marksman
+    stylua
+    luajitPackages.lua-lsp
 
     #! hyprland
     poweralertd
@@ -21,12 +26,18 @@
     mako
     libnotify
     wl-clip-persist
+    hyprpaper
 
     #! hacking
     nmap
     parallel
 
     #! =============================================
+    glow
+    rustc
+    cargo
+    lsof
+    net-tools
     nixd
     nixfmt-rfc-style
     discord
@@ -149,7 +160,6 @@
     # anydesk
     # azure-cli
     # wl-clip-persist
-    # hyprpaper
     # hyprpolkitagent
     # kdePackages.dolphin
     # kdePackages.breeze-gtk

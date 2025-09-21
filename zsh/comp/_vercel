@@ -1,0 +1,72 @@
+#compdef vercel
+
+local context state line
+typeset -A opt_args
+
+_arguments -s \
+  '(-h --help)'{-h,--help}'[Output usage information]' \
+  '(-v --version)'{-v,--version}'[Output the version number]' \
+  '--cwd[Current working directory]' \
+  '-A[Path to the local `vercel.json` file]:file:_files' \
+  '--local-config=[Path to the local `vercel.json` file]:file:_files' \
+  '-Q[Path to the global `.vercel` directory]:dir:_dirs' \
+  '--global-config=[Path to the global `.vercel` directory]:dir:_dirs' \
+  '-d[Debug mode]' \
+  '--no-color[No color mode]' \
+  '-S[Set a custom scope]:scope:' \
+  '--scope[Set a custom scope]:scope:' \
+  '-t[Login token]:token:' \
+  '--token=[Login token]:token:' \
+  '1:command:->command' \
+  '*::args:->args'
+
+case $state in
+  command)
+    _values "Vercel commands" \
+      "deploy[Performs a deployment (default)]" \
+      "build[Build the project locally into './vercel/output']" \
+      "dev[Start a local development server]" \
+      "env[Manages the Environment Variables for your current Project]" \
+      "git[Manage Git provider repository for your current Project]" \
+      "help[Displays complete help for a command]" \
+      "init[Initialize an example project]" \
+      "inspect[Displays information related to a deployment]" \
+      "i[Install an integration from the Marketplace]" \
+      "install[Install an integration from the Marketplace]" \
+      "integration[Manages your Marketplace integrations]" \
+      "link[Link local directory to a Vercel Project]" \
+      "ls[Lists deployments]" \
+      "list[Lists deployments]" \
+      "login[Logs into your account or creates a new one]" \
+      "logout[Logs out of your account]" \
+      "promote[Promote an existing deployment to current]" \
+      "pull[Pull your Project Settings from the cloud]" \
+      "redeploy[Rebuild and deploy a previous deployment]" \
+      "rollback[Quickly revert back to a previous deployment]" \
+      "switch[Switches between different scopes]" \
+      "alias[Manages your domain aliases]" \
+      "bisect[Use binary search to find the deployment that introduced a bug]" \
+      "certs[Manages your SSL certificates]" \
+      "dns[Manages your DNS records]" \
+      "domains[Manages your domain names]" \
+      "logs[Displays the logs for a deployment]" \
+      "projects[Manages your Projects]" \
+      "rm[Removes a deployment]" \
+      "remove[Removes a deployment]" \
+      "teams[Manages your teams]" \
+      "whoami[Shows the username of the currently logged in user]"
+    ;;
+  args)
+    case $words[1] in
+      deploy|build|dev|init|link|ls|list|pull|rollback|redeploy|inspect|logs|rm|remove)
+        _files
+        ;;
+      login)
+        _guard "[email]"
+        ;;
+      *)
+        ;;
+    esac
+    ;;
+esac
+

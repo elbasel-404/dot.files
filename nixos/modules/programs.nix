@@ -3,7 +3,8 @@
   # ! hyprland
   programs.hyprland.enable = true;
   # programs.hyprland.xwayland.enable = false;
-  programs.hyprland.withUWSM = true;
+  programs.hyprland.withUWSM = false;
+  programs.wireshark.enable = true;
   # programs.hyprlock.enable = true;
 
   # ! zsh
@@ -17,7 +18,6 @@
     "z"
     # "you-should-use"
   ];
-
 
   #programs.waybar.enable = false;
   #programs.gnupg.agent.enable = false;
@@ -48,7 +48,6 @@
   # programs.uwsm.waylandCompositors.hyprland.comment = "Hyprland compositor managed by UWSM";
   # programs.uwsm.waylandCompositors.hyprland.binPath = "/run/current-system/sw/bin/Hyprland";
   # programs.uwsm.waylandCompositors.hyprland.binPath = "${pkgs.hyprland}/bin/Hyprland";
-
 
   # programs.direnv.enable = true;
   # programs.direnv.silent = false;
