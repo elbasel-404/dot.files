@@ -5,6 +5,9 @@
     <nixos-hardware/lenovo/ideapad/15alc6>
     <nixos-hardware/lenovo/ideapad/slim-5>
     ./hardware-configuration.nix
+    # ./modules/snap.nix
+    # ./modules/nix-ld.nix
+    ./modules/firefox.nix
     ./modules/gnome.nix
     ./modules/plasma.nix
     ./modules/qt.nix

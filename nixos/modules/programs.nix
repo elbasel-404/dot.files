@@ -1,11 +1,15 @@
 { pkgs, ... }:
 {
+  # ! appimage
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
   # ! hyprland
   programs.hyprland.enable = true;
   # programs.hyprland.xwayland.enable = false;
   programs.hyprland.withUWSM = false;
   programs.wireshark.enable = true;
-  # programs.hyprlock.enable = true;
+  programs.hyprlock.enable = true;
 
   # ! zsh
   programs.zsh.enable = true;
@@ -33,14 +37,6 @@
   #       monospace-font-name = "Noto Sans Mono Medium 11";
   #     };
   #   }
-  # ];
-
-  # programs.nix-ld.enable = true;
-  # programs.nix-ld.libraries = with pkgs; [
-  #   stdenv.cc.cc # C/C++ runtime libs
-  #   zlib
-  #   openssl
-  #   # add more if needed (runs `nix-locate` on missing libs)
   # ];
 
   # programs.uwsm.enable = true;

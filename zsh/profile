@@ -9,6 +9,8 @@ done
 alias gnome="exec dbus-run-session gnome-session"
 alias plasma="exec dbus-run-session startplasma-wayland"
 
+alias lock="hyprlock"
+
 #_volume
 alias vol.up="wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@"
 alias vol.down="wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wpctl get-volume @DEFAULT_AUDIO_SINK@"

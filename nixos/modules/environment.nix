@@ -4,6 +4,13 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
+    #! ai tools
+    gemini-cli
+    claude-code
+    copilot-cli
+    bottles
+    code-cursor
+
     #! neovim
     prettier
     markdownlint-cli
@@ -36,6 +43,11 @@
     tcpdump
 
     #! =============================================
+    biome
+    figlet
+    lazydocker
+    firefoxpwa
+    appimage-run
     tmux
     procs
     parallel
@@ -66,7 +78,6 @@
     git
     gh
     neovim
-    firefox-bin
     mpv
     tree
     unzip

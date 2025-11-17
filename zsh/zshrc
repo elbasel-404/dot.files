@@ -42,4 +42,3 @@ eval "$(atuin init zsh)"
 # # Use cached version for faster startup
 # [[ -f ~/.zcompdump ]] && compinit -C || compinit
 #
-#source ~/config/zsh/shell.cmd
