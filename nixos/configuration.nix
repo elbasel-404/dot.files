@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     # ./modules/snap.nix
     # ./modules/nix-ld.nix
+    ./flakes/hyprspace/module.nix
     ./modules/firefox.nix
     ./modules/gnome.nix
     ./modules/plasma.nix

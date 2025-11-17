@@ -27,6 +27,7 @@
     shfmt
 
     #! hyprland
+    hicolor-icon-theme
     poweralertd
     mako
     powertop
